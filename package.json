@@ -1,0 +1,32 @@
+{
+  "name": "nodejsapi",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile:default": "npx tsc",
+    "dist": "tsup src",
+    "start:dev": "tsx src/index.ts",
+    "start:watch": "cross-env NODE_ENV=development tsx watch src/index.ts",
+    "start:dist": "npm run dist && node dist/index.js",
+    "start": "cross-env NODE_ENV=production npm run start:dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "json-server": "^1.0.0-beta.3",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5"
+  }
+}
