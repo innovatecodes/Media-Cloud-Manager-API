@@ -1,24 +1,24 @@
 {
   "name": "nodejsapi",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:default": "npx tsc",
-    "dist": "tsup src",
-    "start:dev": "tsx src/index.ts",
-    "start:watch": "cross-env NODE_ENV=development tsx watch src/index.ts",
-    "start:dist": "npm run dist && node dist/index.js",
-    "start": "cross-env NODE_ENV=production npm run start:dist"
+    "compile:npx:tsc": "npx tsc",
+    "start:dev": "cross-env NODE_ENV=development tsx watch src/server.ts",
+    "start:dist": "tsup src && node dist/server.js",
+    "start": "cross-env NODE_ENV=production npm run start:dist",
+    "json-server": "json-server --watch db.json --port 8081"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.8",
+    "@types/express": "^5.0.0",
     "@types/node": "^22.10.0",
     "json-server": "^1.0.0-beta.3",
     "tsup": "^8.3.5",
@@ -26,7 +26,10 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@types/cors": "^2.8.17",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
   }
 }

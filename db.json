@@ -1,58 +1,107 @@
-[
-    {
+{
+  "api_details": {
+    "description": "API que permite criar e gerenciar listas personalizadas de vídeos do YouTube. Escolha seus vídeos preferidos e organize-os em playlists para entrega sob demanda.",
+    "version": 1,
+    "author": "Ronaldo Lopes <contato@innovatecodes.com>",
+    "created_at": "2024-12-04 13:17:14",
+    "last_update": null,
+    "license": {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT",
+      "terms": "Permite a utilização, cópia, modificação, fusão, publicação, distribuição, sublicenciamento e/ou venda de cópias do Software, desde que a cópia do aviso de copyright e a permissão sejam incluídas em todas as cópias do Software."
+    }
+  },
+  "videos": {
+    "data": [
+      {
         "id": 1,
-        "category": "Romance",
+        "categories": [
+          "Romance"
+        ],
         "description": "Prestes a competir em um importante concurso culinário, Ária, uma confeteira talentosa, vê seus planos desmoronarem quando seu parceiro a abandona poucos dias antes do evento. Desesperada, ela encontra apoio em um charmoso pai solteiro que a ajuda a descobrir não apenas um ingrediente secreto para sua receita,  mas também o caminho para a verdadeira felicidade. Confeteira Desesperada Encontra o Ingrediente Secreto da Felicidade!",
-        "movie": "Por amor ao chocolate",
+        "title": "Por amor ao chocolate",
+        "posted_at": "2024-12-04 13:18:11",
         "link": "https://youtu.be/Dv5J-fAZu0E?si=jslhtU7R1kOqU3Fc",
         "image_url": "https://i.ytimg.com/vi/Tt2VzgvYokc/maxresdefault.jpg"
-    },
-    {
+      },
+      {
         "id": 2,
-        "category": "Romance",
+        "categories": [
+          "Romance"
+        ],
         "description": "Uma cerimonialista talentosa e dedicada, que organiza noivados impecáveis, enfrenta um desafio inesperado em sua vida amorosa e profissional. Enquanto prepara a festa mais importante de sua carreira, surge um homem que pode transformar sua vida em um verdadeiro desastre. No entanto, ele também pode ser a chave para o amor e a felicidade que ela sempre desejou, mas nunca esperava encontrar.",
-        "movie": "Como encontrar alguém para sempre",
+        "title": "Como encontrar alguém para sempre",
+        "posted_at": "2024-12-04 13:19:12",
         "link": "https://youtu.be/7J9wbti3bkA?si=EWEOS0SRGOPfYzfg",
         "image_url": "https://i.ytimg.com/vi/7J9wbti3bkA/sddefault.jpg"
-    },
-    {
+      },
+      {
         "id": 3,
-        "category": "Romance",
+        "categories": [
+          "Romance"
+        ],
         "description": "Uma renomada cirurgiã cardíaca acorda sem memória em um manicômio após uma tentativa de suicídio. Logo, ela descobre que seu pai faleceu, deixando-a sem herança, e que seu noivo ficou desaparecido, sem deixar rastros.",
-        "movie": "Um sopro de vida",
+        "title": "Um sopro de vida",
+        "posted_at": "2024-12-04 13:20:13",
         "link": "https://youtu.be/6IvnWvA0Ke0?si=teF0-CYbVKAmP5aG",
         "image_url": "https://i.ytimg.com/vi/6IvnWvA0Ke0/hqdefault.jpg"
-    },
-    {
+      },
+      {
         "id": 4,
-        "category": "Romance",
+        "categories": [
+          "Romance"
+        ],
         "description": "Claire, uma enfermeira, luta por uma chance no amor com um novo médico encantador.",
-        "movie": "Receita para amar (2019)",
+        "title": "Receita para amar (2019)",
+        "posted_at": "2024-12-04 13:21:14",
         "link": "https://youtu.be/fRBz2cw8Zyk?si=AZK5L8eUTDjPYrq8",
         "image_url": "https://i.ytimg.com/vi/fRBz2cw8Zyk/maxresdefault.jpg"
-    },
-    {
+      },
+      {
         "id": 5,
-        "category": "Suspense",
+        "categories": [
+          "Suspense"
+        ],
         "description": "Clara, é uma rica , que mora em um lugar com vizinhos ricos, mas ela tem seu mundo virado de cabeça para baixo com a chegada inesperada do seu cunhado.",
-        "movie": "O cunhado perigoso",
+        "title": "O cunhado perigoso",
+        "posted_at": "2024-12-04 13:22:15",
         "link": "https://youtu.be/IfJoMkbWD7E?si=0IEbY13JMyjDnRYR",
         "image_url": "https://i.ytimg.com/vi/IfJoMkbWD7E/sddefault.jpg"
-    },
-    {
+      },
+      {
         "id": 6,
-        "category": "Comedy / Romance",
+        "categories": [
+          "Comedy",
+          "Romance"
+        ],
         "description": "A dra. Emma Lloyd (Uma Thurman) possui um programa de rádio de sucesso, onde dá conselhos sentimentais. Emma defende sempre o amor racional, apresentando suas teses em seu livro recém-lançado, \"Amor Real\".",
-        "movie": "Marido por acaso",
+        "title": "Marido por acaso",
+        "posted_at": "2024-12-04 13:23:16",
         "link": "https://youtu.be/2pf8CNTpQb8?si=CCSNwpNzharzTmie",
         "image_url": "https://i.ytimg.com/vi/Y47CYSu7Ddk/sddefault.jpg"
-    },
-    {
+      },
+      {
         "id": 7,
-        "category": "Romance",
+        "categories": [
+          "Romance"
+        ],
         "description": "TLauren (Danielle Panabaker) é contratada para escrever o livro de receitas de um famoso chef, Kevin Durant (Shawn Roberts). Durante a escrita, os dois desenvolverão uma afeição que dará lugar ao amor e, consequentemente, a um romance.",
-        "movie": "As receitas de amor",
+        "title": "As receitas de amor",
+        "posted_at": "2024-12-04 13:24:17",
         "link": "https://youtu.be/kHebdHQ048M?si=c6OsYcPDtol0sffu",
         "image_url": "https://i.ytimg.com/vi/DrcQX3dg6Ew/sddefault.jpg"
-    }
-]
+      },
+      {
+        "id": 8,
+        "categories": [
+          "Comedy"
+        ],
+        "description": "O filme é baseado na peça homônima criada e estrelada pelo próprio Paulo e que levou milhões de espectadores ao teatro ao longo dos anos em cartaz.",
+        "title": "Minha mãe é uma peça",
+        "posted_at": "2024-12-04 17:16:17",
+        "link": "https://youtu.be/xn0MWFAR1cY?si=hOZnqbbbQ2YBfmdC",
+        "image_url": "https://i.ytimg.com/vi/qfdcZQ36u_A/sddefault.jpg"
+      }
+    ]
+  }
+}
