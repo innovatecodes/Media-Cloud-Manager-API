@@ -1,15 +1,7 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
-import {
-  apiVersion,
-  corsOptions,
-  formatDate,
-  sendStatusCodeMessage,
-  inMemoryDatabasePath,
-  StatusCode,
-} from "./app/utils/utils";
-import fs from "fs";
-import { ITubeServerManagerApi } from "./app/interfaces/tube-server-manager.interface";
+import { apiVersion, corsOptions } from "./app/utils/utils";
+import videoRoutes from "./app/routes/tube-server-manager.routes";
 
 export const app = express();
 
@@ -36,40 +28,5 @@ app.use(express.urlencoded({ extended: true }));
  */
 app.use(cors(corsOptions()));
 
-let currentJson: ITubeServerManagerApi;
+app.use(`/api/${apiVersion}/videos`, videoRoutes);
 
-app.get(`/api/${apiVersion}/videos/data`, (request, response: Response) => {
-  fs.readFile(inMemoryDatabasePath, (error, data) => {
-    if (error) {
-      return response.status(StatusCode.INTERNAL_SERVER_ERROR).json({
-        error: "Erro ao tentar ler os dados do arquivo!", 
-        timestamp: formatDate(),
-      });
-    } else {
-      currentJson = JSON.parse(data.toString());
-      return response.status(StatusCode.OK).json(currentJson);
-    }
-  });
-});
-
-app.post(`/api/${apiVersion}/videos/data`, (request: Request, response: Response): any => {
-  if (Object.keys(request.body).length !== 0) {
-    currentJson.videos.data.push(request.body);
-
-    fs.writeFile(
-      inMemoryDatabasePath,
-      JSON.stringify(currentJson, null, 2),
-      (error) => {
-        if (error) {
-          return response.status(StatusCode.INTERNAL_SERVER_ERROR).json({
-            error: sendStatusCodeMessage(StatusCode.INTERNAL_SERVER_ERROR),
-          });
-        }
-        return response.status(StatusCode.CREATED).json({ api: currentJson });
-      }
-    );
-  } else
-    return response
-      .status(StatusCode.BAD_REQUEST)
-      .json({ error: sendStatusCodeMessage(StatusCode.BAD_REQUEST) });
-});

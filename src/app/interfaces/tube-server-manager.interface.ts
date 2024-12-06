@@ -1,6 +1,8 @@
 import { ContentType, HttpMethod, StatusCode } from "../utils/utils";
 
-interface ApiDetails<T extends Date | null | string = string > extends ILicense {
+type NullableDateString = Date | null | string;
+
+interface ApiDetails<T extends NullableDateString = string> extends ILicense {
   description: string;
   version: number;
   author: string;
@@ -14,12 +16,13 @@ interface ILicense {
   terms: string;
 }
 
-interface IYouTubeVideoDetails<T extends Date | string = string> {
-  id?: number;
-  categories: Array<string>;
-  description: string;
+interface IYouTubeVideoDetails<T extends NullableDateString = null> {
+  video_id?: number;
+  categories: string;
+  video_description: string;
   title: string;
   posted_at: T;
+  updated_at: T;
   link: string;
   image_url?: string;
 }
@@ -28,7 +31,7 @@ interface IData {
   data: IYouTubeVideoDetails[];
 }
 
-export interface ITubeServerManagerApi{
+export interface ITubeServerManagerApi {
   api_details: ApiDetails;
   videos: IData;
 }

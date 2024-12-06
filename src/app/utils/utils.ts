@@ -1,15 +1,23 @@
 // import 'dotenv/config';
 import * as dotenv from "dotenv";
 import { Request } from "express";
-import { ICorsOptions } from "../interfaces/tube-server-manager.interface";
+import {
+  ICorsOptions,
+  // ITubeServerManagerApi,
+} from "../interfaces/tube-server-manager.interface";
 import path = require("path");
 
 type TProtocol = "http" | "https";
 
-export const httpProtocol = (request: Request): TProtocol => {
-  const httpProtocol = request.socket.localPort !== 443 ? "http" : "https";
-  return httpProtocol;
-};
+export const apiVersion: string = "v1";
+
+export const loadNodeEnvironment = (): dotenv.DotenvConfigOutput =>
+  dotenv.config({
+    path: `${__dirname}/../../../${
+      process.env.NODE_ENV === "development" ? ".env" : ".env.production"
+    }`,
+  });
+
 export enum StatusCode {
   OK = 200, // Requisição bem-sucedida
   CREATED = 201, // Recurso criado com sucesso
@@ -103,17 +111,6 @@ export const sendStatusCodeMessage = (status: StatusCode): string => {
   return statusMessage;
 };
 
-export const generateHash = (quantity: number): string => {
-  let key: string = "";
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#&*()-_=+[]{}|.<>/\\";
-
-  for (let index = 0; index < quantity; index++)
-    key += characters[Math.floor(Math.random() * characters.length)];
-
-  return key;
-};
-
 export const corsOptions = (): ICorsOptions<
   Record<string, ContentType> | Record<string, string>
 > => {
@@ -146,19 +143,32 @@ export const formatDate = (): string => {
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 };
 
-export const apiVersion: string = "v1";
-
 export const inMemoryDatabasePath = path.join(
   __dirname,
-  "..",
-  "..",
-  "..",
-  "db.json"
+  "../repositories",
+  "videos.json"
+
+  /*
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "videos.json"
+  */
 );
 
-export const loadNodeEnvironment = (): dotenv.DotenvConfigOutput =>
-  dotenv.config({
-    path: `${__dirname}/../../../${
-      process.env.NODE_ENV === "development" ? ".env" : ".env.production"
-    }`,
-  });
+export const generateHash = (quantity: number): string => {
+  let key: string = "";
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#&*()-_=+[]{}|.<>/\\";
+
+  for (let index = 0; index < quantity; index++)
+    key += characters[Math.floor(Math.random() * characters.length)];
+
+  return key;
+};
+
+export const httpProtocol = (request: Request): TProtocol => {
+  const httpProtocol = request.socket.localPort !== 443 ? "http" : "https";
+  return httpProtocol;
+};
