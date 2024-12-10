@@ -3,7 +3,6 @@ import * as dotenv from "dotenv";
 import { Request } from "express";
 import {
   ICorsOptions,
-  // ITubeServerManagerApi,
 } from "../interfaces/tube-server-manager.interface";
 import path = require("path");
 
@@ -172,3 +171,12 @@ export const httpProtocol = (request: Request): TProtocol => {
   const httpProtocol = request.socket.localPort !== 443 ? "http" : "https";
   return httpProtocol;
 };
+
+export const truncateText = (video_description: string): string => {
+  if (video_description.length >= 160) {
+    return `${video_description.substring(0, 160)}... `;
+  }
+  return video_description;
+};
+
+

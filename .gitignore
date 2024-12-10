@@ -1,9 +1,12 @@
 /node_modules
-/docs
+# /docs
 /src/app/sql
 
 # Ignorar todos os arquivos .env
 .env*
+
+# Ignorar todos os arquivos .http
+.http
 
 # Exceto o .env.example
 !.env.example
