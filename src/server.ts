@@ -1,4 +1,4 @@
-import { app } from "./app";
+import app from "./app";
 import { loadNodeEnvironment } from "./app/utils/utils";
 
 loadNodeEnvironment();
