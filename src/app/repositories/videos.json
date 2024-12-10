@@ -3,7 +3,7 @@
     "description": "API que permite criar e gerenciar listas personalizadas de vídeos do YouTube. Escolha seus vídeos preferidos e organize-os em playlists para entrega sob demanda.",
     "version": 1,
     "author": "Ronaldo Lopes <contato@innovatecodes.com>",
-    "created_at": "2024-12-04 13:17:14",
+    "created_at": "2024-12-04 13:17:00",
     "last_update": null,
     "license": {
       "type": "MIT",
