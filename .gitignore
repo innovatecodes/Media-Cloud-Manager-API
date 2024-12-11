@@ -13,3 +13,4 @@ client.http
 
 # Exceto o .env.example
 !.env.example
+
