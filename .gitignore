@@ -11,6 +11,9 @@
 # Ignorar o arquivo example.http especificamente
 example.http
 
+# Ignorar o arquivo db.json especificamente
+db.json
+
 # Exceto o .env.example
 !.env.example
 
