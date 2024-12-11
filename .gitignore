@@ -8,8 +8,8 @@
 # Ignorar todos os arquivos .http
 *.http
 
-# Ignorar o arquivo client.http especificamente
-client.http
+# Ignorar o arquivo example.http especificamente
+example.http
 
 # Exceto o .env.example
 !.env.example
