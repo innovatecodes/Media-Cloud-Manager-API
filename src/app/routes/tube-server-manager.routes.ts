@@ -1,12 +1,12 @@
 import { Router } from "express";
 import { TubeServerManagerController } from "../controllers/tube-server-manager.controller";
+import { EndPoint } from "../utils/utils";
 
-const videoRoutes = Router();
+export const videoRoutes = Router();
 
-videoRoutes.get(`/videos`,  TubeServerManagerController.getAllVideos);
-videoRoutes.get(`/videos/:id`, TubeServerManagerController.getVideoByid);
-videoRoutes.post(`/videos`, TubeServerManagerController.createVideo);
-videoRoutes.put(`/videos/:id`, TubeServerManagerController.updateVideo);
-videoRoutes.delete(`/videos/:id`, TubeServerManagerController.deleteVideo);
-
-export default videoRoutes;
+videoRoutes.get(EndPoint.VIDEOS,  TubeServerManagerController.getAllVideos);
+videoRoutes.get(EndPoint.VIDEOS_SEARCH,  TubeServerManagerController.search);
+videoRoutes.get(EndPoint.VIDEO_By_ID, TubeServerManagerController.getVideoByid);
+videoRoutes.post(EndPoint.VIDEOS, TubeServerManagerController.createVideo);
+videoRoutes.put(EndPoint.VIDEO_By_ID, TubeServerManagerController.updateVideo);
+videoRoutes.delete(EndPoint.VIDEO_By_ID, TubeServerManagerController.deleteVideo);

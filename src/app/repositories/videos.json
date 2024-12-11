@@ -14,7 +14,9 @@
   "data": [
     {
       "video_id": 1,
-      "categories": "Comedy",
+      "categories": [
+        "comedy"
+      ],
       "video_description": "O filme é baseado na peça homônima criada e estrelada pelo próprio Paulo e que levou milhões de espectadores ao teatro ao longo dos anos em cartaz.",
       "title": "Minha mãe é uma peça",
       "posted_at": "2024-12-10 19:37:37",
@@ -24,7 +26,9 @@
     },
     {
       "video_id": 2,
-      "categories": "romance",
+      "categories": [
+        "romance"
+      ],
       "video_description": "Prestes a competir em um importante concurso culinário, Ária, uma confeteira talentosa, vê seus planos desmoronarem quando seu parceiro a abandona poucos dias antes do evento. Desesperada, ela encontra apoio em um charmoso pai solteiro que a ajuda a descobrir não apenas um ingrediente secreto para sua receita,  mas também o caminho para a verdadeira felicidade. Confeteira Desesperada Encontra o Ingrediente Secreto da Felicidade!",
       "title": "Por amor ao chocolate",
       "posted_at": "2024-12-10 19:38:04",
@@ -34,7 +38,9 @@
     },
     {
       "video_id": 3,
-      "categories": "romance",
+      "categories": [
+        "romance"
+      ],
       "video_description": "Uma cerimonialista talentosa e dedicada, que organiza noivados impecáveis, enfrenta um desafio inesperado em sua vida amorosa e profissional. Enquanto prepara a festa mais importante de sua carreira, surge um homem que pode transformar sua vida em um verdadeiro desastre. No entanto, ele também pode ser a chave para o amor e a felicidade que ela sempre desejou, mas nunca esperava encontrar.",
       "title": "Como encontrar alguém para sempre",
       "posted_at": "2024-12-10 19:38:39",
@@ -44,7 +50,9 @@
     },
     {
       "video_id": 4,
-      "categories": "romance",
+      "categories": [
+        "romance"
+      ],
       "video_description": "Uma renomada cirurgiã cardíaca acorda sem memória em um manicômio após uma tentativa de suicídio. Logo, ela descobre que seu pai faleceu, deixando-a sem herança, e que seu noivo ficou desaparecido, sem deixar rastros.",
       "title": "Um sopro de vida",
       "posted_at": "2024-12-10 19:38:53",
@@ -54,7 +62,9 @@
     },
     {
       "video_id": 5,
-      "categories": "romance",
+      "categories": [
+        "romance"
+      ],
       "video_description": "Claire, uma enfermeira, luta por uma chance no amor com um novo médico encantador.",
       "title": "Receita para amar (2019)",
       "posted_at": "2024-12-10 19:39:05",
@@ -64,7 +74,9 @@
     },
     {
       "video_id": 6,
-      "categories": "Suspense",
+      "categories": [
+        "thriller"
+      ],
       "video_description": "Clara, é uma rica , que mora em um lugar com vizinhos ricos, mas ela tem seu mundo virado de cabeça para baixo com a chegada inesperada do seu cunhado.",
       "title": "O cunhado perigoso",
       "posted_at": "2024-12-10 19:39:18",
@@ -74,7 +86,10 @@
     },
     {
       "video_id": 7,
-      "categories": "Comedy, Romance",
+      "categories": [
+        "comedy",
+        "romance"
+      ],
       "video_description": "A dra. Emma Lloyd (Uma Thurman) possui um programa de rádio de sucesso, onde dá conselhos sentimentais. Emma defende sempre o amor racional, apresentando suas teses em seu livro recém-lançado, \"Amor Real\".",
       "title": "Marido por acaso",
       "posted_at": "2024-12-10 19:39:28",
@@ -84,7 +99,9 @@
     },
     {
       "video_id": 8,
-      "categories": "romance",
+      "categories": [
+        "romance"
+      ],
       "video_description": "TLauren (Danielle Panabaker) é contratada para escrever o livro de receitas de um famoso chef, Kevin Durant (Shawn Roberts). Durante a escrita, os dois desenvolverão uma afeição que dará lugar ao amor e, consequentemente, a um romance.",
       "title": "As receitas de amor",
       "posted_at": "2024-12-10 19:39:43",

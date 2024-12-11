@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import { apiVersion, corsOptions } from "./app/utils/utils";
-import videoRoutes from "./app/routes/tube-server-manager.routes";
+import { apiVersion, corsOptions, EndPoint } from "./app/utils/utils";
+import { videoRoutes } from "./app/routes/tube-server-manager.routes";
 
-const app = express();
+export const app = express();
 
 /**
  * Middleware que faz o parsing do corpo da requisição no formato JSON.
@@ -28,6 +28,4 @@ app.use(express.urlencoded({ extended: true }));
  */
 app.use(cors(corsOptions()));
 
-app.use(`/api/${apiVersion}`, videoRoutes);
-
-export default app;
+app.use(`${EndPoint.API}${apiVersion}`, videoRoutes);

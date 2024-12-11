@@ -6,7 +6,10 @@
 .env*
 
 # Ignorar todos os arquivos .http
-.http
+*.http
+
+# Ignorar o arquivo client.http especificamente
+client.http
 
 # Exceto o .env.example
 !.env.example

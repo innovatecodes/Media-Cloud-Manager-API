@@ -17,7 +17,7 @@ export interface Info<T extends string | null> {
 
 interface IYouTubeVideo<T extends string | null> {
   video_id?: number;
-  categories: string;
+  categories: Array<string>;
   video_description: string;
   title: string;
   posted_at: T;

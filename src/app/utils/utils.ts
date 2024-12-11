@@ -1,9 +1,7 @@
 // import 'dotenv/config';
 import * as dotenv from "dotenv";
 import { Request } from "express";
-import {
-  ICorsOptions,
-} from "../interfaces/tube-server-manager.interface";
+import { ICorsOptions } from "../interfaces/tube-server-manager.interface";
 import path = require("path");
 
 type TProtocol = "http" | "https";
@@ -55,8 +53,10 @@ export enum HttpMethod {
 }
 
 export enum EndPoint {
-  VIDEOS = "videos/data",
-  GET_VIDEO_BY_ID = "videos/data/:id",
+  API = "/api/",
+  VIDEOS = "/videos",
+  VIDEOS_SEARCH = "/videos/search",
+  VIDEO_By_ID = "/videos/:id",
 }
 
 export enum ContentType {
@@ -178,5 +178,3 @@ export const truncateText = (video_description: string): string => {
   }
   return video_description;
 };
-
-
