@@ -1,6 +1,6 @@
 # Tube Server Manager - Detalhes da API
 
-- **Descrição**: API que permite gerenciar e listar vídeos do YouTube.
+- **Descrição**: API que permite gerenciar e listar vídeos do YouTube, projetada para simular o comportamento de uma aplicação em produção, utilizando dados mockados para fins de desenvolvimento e teste. Os dados mockados foram armazenados em arquivo chamado videos.json, que simula respostas de um banco de dados real.
 - **Versão**: 1.0
 - **Autor**: Ronaldo Lopes <contato@innovatecodes.com>
 - **Criado em**: 2024-12-04 13:17:14

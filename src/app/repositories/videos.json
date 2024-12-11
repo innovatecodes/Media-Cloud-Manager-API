@@ -22,7 +22,8 @@
       "posted_at": "2024-12-10 19:37:37",
       "updated_at": null,
       "link": "https://youtu.be/xn0MWFAR1cY?si=hOZnqbbbQ2YBfmdC",
-      "image_url": "https://i.ytimg.com/vi/qfdcZQ36u_A/sddefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/qfdcZQ36u_A/sddefault.jpg",
+      "likes": 0
     },
     {
       "video_id": 2,
@@ -34,7 +35,8 @@
       "posted_at": "2024-12-10 19:38:04",
       "updated_at": null,
       "link": "https://youtu.be/Dv5J-fAZu0E?si=jslhtU7R1kOqU3Fc",
-      "image_url": "https://i.ytimg.com/vi/Tt2VzgvYokc/maxresdefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/Tt2VzgvYokc/maxresdefault.jpg",
+      "likes": 0
     },
     {
       "video_id": 3,
@@ -46,7 +48,8 @@
       "posted_at": "2024-12-10 19:38:39",
       "updated_at": null,
       "link": "https://youtu.be/7J9wbti3bkA?si=EWEOS0SRGOPfYzfg",
-      "image_url": "https://i.ytimg.com/vi/7J9wbti3bkA/sddefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/7J9wbti3bkA/sddefault.jpg",
+      "likes": 0
     },
     {
       "video_id": 4,
@@ -58,7 +61,8 @@
       "posted_at": "2024-12-10 19:38:53",
       "updated_at": null,
       "link": "https://youtu.be/6IvnWvA0Ke0?si=teF0-CYbVKAmP5aG",
-      "image_url": "https://i.ytimg.com/vi/6IvnWvA0Ke0/hqdefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/6IvnWvA0Ke0/hqdefault.jpg",
+      "likes": 0
     },
     {
       "video_id": 5,
@@ -70,7 +74,8 @@
       "posted_at": "2024-12-10 19:39:05",
       "updated_at": null,
       "link": "https://youtu.be/fRBz2cw8Zyk?si=AZK5L8eUTDjPYrq8",
-      "image_url": "https://i.ytimg.com/vi/fRBz2cw8Zyk/maxresdefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/fRBz2cw8Zyk/maxresdefault.jpg",
+      "likes": 0
     },
     {
       "video_id": 6,
@@ -82,7 +87,8 @@
       "posted_at": "2024-12-10 19:39:18",
       "updated_at": null,
       "link": "https://youtu.be/IfJoMkbWD7E?si=0IEbY13JMyjDnRYR",
-      "image_url": "https://i.ytimg.com/vi/IfJoMkbWD7E/sddefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/IfJoMkbWD7E/sddefault.jpg",
+      "likes": 0
     },
     {
       "video_id": 7,
@@ -95,7 +101,8 @@
       "posted_at": "2024-12-10 19:39:28",
       "updated_at": null,
       "link": "https://youtu.be/2pf8CNTpQb8?si=CCSNwpNzharzTmie",
-      "image_url": "https://i.ytimg.com/vi/Y47CYSu7Ddk/sddefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/Y47CYSu7Ddk/sddefault.jpg",
+      "likes": 0
     },
     {
       "video_id": 8,
@@ -107,7 +114,34 @@
       "posted_at": "2024-12-10 19:39:43",
       "updated_at": null,
       "link": "https://youtu.be/kHebdHQ048M?si=c6OsYcPDtol0sffu",
-      "image_url": "https://i.ytimg.com/vi/DrcQX3dg6Ew/sddefault.jpg"
+      "image_url": "https://i.ytimg.com/vi/DrcQX3dg6Ew/sddefault.jpg",
+      "likes": 0
+    },
+    {
+      "video_id": 9,
+      "categories": [
+        "terror"
+      ],
+      "video_description": "Catherine e sua família se mudam para uma casa que antes abrigava uma igreja. Em pouco tempo, fanáticos religiosos surgem, segredos são revelados e uma entidade maligna retorna para coletar mais almas.",
+      "title": "O mistério do convento 2",
+      "posted_at": "2024-12-11 15:38:47",
+      "updated_at": null,
+      "link": "https://youtu.be/EViwIElwEjU?si=QayO8aab_HpRfUyq",
+      "image_url": "https://i.ytimg.com/vi/EViwIElwEjU/sddefault.jpg",
+      "likes": 1
+    },
+    {
+      "video_id": 10,
+      "categories": [
+        "terror"
+      ],
+      "video_description": "Em um grupo de estudantes universitários, em busca de novas emoções, se muda para uma antiga mansão com uma história sombria. Entre eles, destaca-se Tarin, que começa a ser perseguida por visões aterradoras logo nos primeiros dias. Inicialmente, tudo parece ser apenas fruto da imaginação, mas quando as alucinações se tornam reais e sangrentas, a diversão se transforma em uma luta pela sobrevivência.",
+      "title": "Mistério em uma casa antiga",
+      "posted_at": "2024-12-11 15:44:11",
+      "updated_at": "2024-12-11 16:02:41",
+      "link": "https://youtu.be/vGdRQ7X7z0k?si=dkMBttoX06dHLwTi",
+      "image_url": "https://i.ytimg.com/vi/vGdRQ7X7z0k/sddefault.jpg",
+      "likes": 1
     }
   ]
 }

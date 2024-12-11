@@ -24,6 +24,7 @@ interface IYouTubeVideo<T extends string | null> {
   updated_at: T;
   link: string;
   image_url?: string;
+  likes?: number;
 }
 
 export interface IData {

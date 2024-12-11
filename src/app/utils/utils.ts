@@ -172,9 +172,8 @@ export const httpProtocol = (request: Request): TProtocol => {
   return httpProtocol;
 };
 
-export const truncateText = (video_description: string): string => {
-  if (video_description.length >= 160) {
-    return `${video_description.substring(0, 160)}... `;
-  }
+export const truncateText = (video_description: string, numberOfCharacters: number): string => {
+  if (video_description.length >= numberOfCharacters)
+    `${video_description.substring(0, numberOfCharacters)}... `;
   return video_description;
 };

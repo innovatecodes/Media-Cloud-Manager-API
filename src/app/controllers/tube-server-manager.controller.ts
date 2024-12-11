@@ -3,7 +3,7 @@ import { TubeServerManagerService } from "../services/tube-server-manager.servic
 import { StatusCode } from "../utils/utils";
 
 export class TubeServerManagerController {
-  static async getAllVideos(req: Request, res: Response) {
+  public static async getAllVideos(req: Request, res: Response) {
     try {
       const data = await TubeServerManagerService.getAllVideos();
       res.status(StatusCode.OK).json({ api: data });
@@ -14,7 +14,7 @@ export class TubeServerManagerController {
     }
   }
 
-  static async getVideoByid(req: Request, res: Response) {
+  public static async getVideoByid(req: Request, res: Response) {
     try {
       const video = await TubeServerManagerService.getVideoById(
         Number(req.params.id)
@@ -32,7 +32,7 @@ export class TubeServerManagerController {
     }
   }
 
-  static async createVideo(req: Request, res: Response) {
+  public static async createVideo(req: Request, res: Response) {
     try {
       const data = await TubeServerManagerService.createVideo(req);
       res.status(StatusCode.CREATED).json({ api: data });
@@ -48,7 +48,7 @@ export class TubeServerManagerController {
     }
   }
 
-  static async updateVideo(req: Request, res: Response) {
+  public static async updateVideo(req: Request, res: Response) {
     try {
       const data = await TubeServerManagerService.updateVideo(
         Number(req.params.id),
@@ -67,7 +67,7 @@ export class TubeServerManagerController {
     }
   }
 
-  static async deleteVideo(req: Request, res: Response) {
+  public static async deleteVideo(req: Request, res: Response) {
     try {
       await TubeServerManagerService.deleteVideo(Number(req.params.id));
       res.status(StatusCode.NO_CONTENT).end();
@@ -83,7 +83,7 @@ export class TubeServerManagerController {
     }
   }
 
-  static async search(req: Request, res: Response) {
+  public static async search(req: Request, res: Response) {
     try {
       const filtered = await TubeServerManagerService.search(req, res);
       res.status(StatusCode.OK).json(filtered);
