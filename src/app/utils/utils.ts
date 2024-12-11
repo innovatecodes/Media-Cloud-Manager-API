@@ -56,7 +56,7 @@ export enum EndPoint {
   API = "/api/",
   VIDEOS = "/videos",
   VIDEOS_SEARCH = "/videos/search",
-  VIDEO_By_ID = "/videos/:id",
+  VIDEO_BY_ID = "/videos/:id",
 }
 
 export enum ContentType {
