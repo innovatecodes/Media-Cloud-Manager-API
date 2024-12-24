@@ -1,101 +1,67 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { TubeServerManagerService } from "../services/tube-server-manager.service";
-import { StatusCode } from "../utils/utils";
+import { StatusCode } from "../utils/enums";
 
 export class TubeServerManagerController {
-  public static async getAllVideos(req: Request, res: Response) {
+  public static async getAll(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await TubeServerManagerService.getAllVideos();
-      res.status(StatusCode.OK).json({ api: data });
+      const data = await TubeServerManagerService.getAll(req, res);
+      res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {
-      res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
-      return;
+      next(error);
     }
   }
 
-  public static async getVideoByid(req: Request, res: Response) {
+  public static async getMediaContentById(req: Request, res: Response, next: NextFunction) {
     try {
-      const video = await TubeServerManagerService.getVideoById(
+      const data = await TubeServerManagerService.getMediaContentById(
         Number(req.params.id)
       );
-      res.status(StatusCode.OK).json(video /*{ api: {data: video} }*/);
+      res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(StatusCode.NOT_FOUND).json({ error: error.message });
-        return;
-      } else {
-        res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
-        return;
-      }
+      next(error);
     }
   }
 
-  public static async createVideo(req: Request, res: Response) {
+  public static async createMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await TubeServerManagerService.createVideo(req);
-      res.status(StatusCode.CREATED).json({ api: data });
+      const data = await TubeServerManagerService.createMediaContent(req, res);
+      res.status(StatusCode.CREATED).json(data);
       return;
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(StatusCode.NOT_FOUND).json({ error: error.message });
-        return;
-      } else {
-        res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
-        return;
-      }
+      next(error);
     }
   }
 
-  public static async updateVideo(req: Request, res: Response) {
+  public static async updateMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await TubeServerManagerService.updateVideo(
-        Number(req.params.id),
-        req
-      );
-      res.status(StatusCode.OK).json({ api: data });
+      const data = await TubeServerManagerService.updateMediaContent(Number(req.params.id), req, res);
+      res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(StatusCode.NOT_FOUND).json({ error: error.message });
-        return;
-      } else {
-        res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
-        return;
-      }
+      next(error);
     }
   }
 
-  public static async deleteVideo(req: Request, res: Response) {
+  public static async updateImageFile(req: Request, res: Response, next: NextFunction) {
     try {
-      await TubeServerManagerService.deleteVideo(Number(req.params.id));
+      const data = await TubeServerManagerService.updateImageFile(Number(req.params.id), req, res);
+      res.status(StatusCode.OK).json(data);
+      return;
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public static async deleteMediaContent(req: Request, res: Response, next: NextFunction) {
+    try {
+      await TubeServerManagerService.deleteMediaContent(Number(req.params.id));
       res.status(StatusCode.NO_CONTENT).end();
       return;
     } catch (error) {
-      if (error instanceof Error) {
-        res.status(StatusCode.NOT_FOUND).json({ error: error.message });
-        return;
-      } else {
-        res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
-        return;
-      }
-    }
-  }
-
-  public static async search(req: Request, res: Response) {
-    try {
-      const filtered = await TubeServerManagerService.search(req, res);
-      res.status(StatusCode.OK).json(filtered);
-      return;
-    } catch (error) {
-      if (error instanceof Error) {
-        res.status(StatusCode.NOT_FOUND).json({ error: error.message });
-        return;
-      } else {
-        res.status(StatusCode.INTERNAL_SERVER_ERROR).json(error);
-        return;
-      }
+      next(error);
     }
   }
 }

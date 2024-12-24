@@ -1,5 +1,6 @@
 {
   "extends": "@tsconfig/recommended/tsconfig.json",
+  
   /**
     * Extende as configurações básicas recomendadas pelo pacote "@tsconfig/recommended".
     * OBS: Certifique-se de instalar este pacote como dependência de desenvolvimento:
@@ -18,12 +19,12 @@
     "noEmitOnError": true, // O TypeScript não gerará arquivos JavaScript se houver erros de compilação.
     "strictNullChecks": true, // Exige que valores `null` e `undefined` sejam tratados explicitamente.
     "skipLibCheck": true, // Ignora a verificação de tipos em arquivos de declaração de biblioteca (`*.d.ts`).
-    "noUnusedLocals": true // Gera erros para variáveis locais que foram declaradas mas não usadas.
+    "noUnusedLocals": false // Gera erros para variáveis locais que foram declaradas mas não usadas.
   },
   "compileOnSave": true, // Faz com que a recompilação automática seja feita ao salvar um arquivo TypeScript.
   "include": [
     "src/**/*",
-    "src/server.ts"
+    "src/index.ts"
   ],// Especifica os arquivos a serem incluídos na compilação, todos os arquivos dentro do diretório `src` e seus subdiretórios.
   "exclude": [
     "**/*.spec.ts" // Exclui arquivos com extensão `.spec.ts` da compilação.

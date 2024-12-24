@@ -1,0 +1,191 @@
+{
+  "info": {
+    "description": "API que permite criar e gerenciar listas personalizadas de vídeos do YouTube. Escolha seus vídeos preferidos e organize-os em playlists para entrega sob demanda.",
+    "version": 1,
+    "author": "Ronaldo Lopes <contato@innovatecodes.com>",
+    "created_at": "2024-12-04 13:17:00",
+    "last_update": null,
+    "license": {
+      "type": "MIT",
+      "url": "https://opensource.org/licenses/MIT",
+      "terms": "Permite a utilização, cópia, modificação, fusão, publicação, distribuição, sublicenciamento e/ou venda de cópias do Software, desde que a cópia do aviso de copyright e a permissão sejam incluídas em todas as cópias do Software."
+    }
+  },
+  "data": [
+    {
+      "content_id": 1,
+      "media_type": "video",
+      "categories": "comedy",
+      "media_description": "O filme é baseado na peça homônima criada e estrelada pelo próprio Paulo e que levou milhões de espectadores ao teatro ao longo dos anos em cartaz.",
+      "title": "Minha mãe é uma peça",
+      "posted_at": "2024-12-10 19:37:37",
+      "updated_at": "2024-12-24 18:28:06",
+      "link": "https://youtu.be/xn0MWFAR1cY?si=hOZnqbbbQ2YBfmdC",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-98d8c367-1eae-4e84-b91e-1e26b519cc5d-1735075685178-148181922.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075693/uploads/xb7a5c1hkptfbsswfm56.jpg",
+      "temporary_public_id": "xb7a5c1hkptfbsswfm56",
+      "likes": 0
+    },
+    {
+      "content_id": 2,
+      "media_type": "video",
+      "categories": [
+        "romance"
+      ],
+      "media_description": "Prestes a competir em um importante concurso culinário, Ária, uma confeteira talentosa, vê seus planos desmoronarem quando seu parceiro a abandona poucos dias antes do evento. Dese... ",
+      "title": "Por amor ao chocolate",
+      "posted_at": "2024-12-10 19:38:04",
+      "updated_at": "2024-12-24 18:29:11",
+      "link": "https://youtu.be/Dv5J-fAZu0E?si=jslhtU7R1kOqU3Fc",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-2c98dfd7-efdf-4f33-9f8c-f6435480a1d6-1735075749840-650163747.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075758/uploads/u0zruwusdy2nrhlgvvov.jpg",
+      "temporary_public_id": "u0zruwusdy2nrhlgvvov",
+      "likes": 0
+    },
+    {
+      "content_id": 3,
+      "media_type": "video",
+      "categories": [
+        "romance"
+      ],
+      "media_description": "Uma cerimonialista talentosa e dedicada, que organiza noivados impecáveis, enfrenta um desafio inesperado em sua vida amorosa e profissional. Enquanto prepara a festa mais importan... ",
+      "title": "Como encontrar alguém para sempre",
+      "posted_at": "2024-12-10 19:38:39",
+      "updated_at": "2024-12-24 18:30:57",
+      "link": "https://youtu.be/7J9wbti3bkA?si=EWEOS0SRGOPfYzfg",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-9f601f0a-547e-4734-b180-3b561b7afc20-1735075855865-617601289.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075864/uploads/dyxodso7uujzafsjkmq9.jpg",
+      "temporary_public_id": "dyxodso7uujzafsjkmq9",
+      "likes": 0
+    },
+    {
+      "content_id": 4,
+      "media_type": "video",
+      "categories": [
+        "romance"
+      ],
+      "media_description": "Uma renomada cirurgiã cardíaca acorda sem memória em um manicômio após uma tentativa de suicídio. Logo, ela descobre que seu pai faleceu, deixando-a sem herança, e que seu noivo fi... ",
+      "title": "Um sopro de vida",
+      "posted_at": "2024-12-10 19:38:53",
+      "updated_at": "2024-12-24 18:31:24",
+      "link": "https://youtu.be/6IvnWvA0Ke0?si=teF0-CYbVKAmP5aG",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-4132732b-fd80-49dc-87f9-e6261115472e-1735075883361-681641649.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075891/uploads/obwndeinwwmfzsim60bq.jpg",
+      "temporary_public_id": "obwndeinwwmfzsim60bq",
+      "likes": 0
+    },
+    {
+      "content_id": 5,
+      "media_type": "video",
+      "categories": [
+        "romance"
+      ],
+      "media_description": "Claire, uma enfermeira, luta por uma chance no amor com um novo médico encantador.",
+      "title": "Receita para amar (2019)",
+      "posted_at": "2024-12-10 19:39:05",
+      "updated_at": "2024-12-24 18:32:12",
+      "link": "https://youtu.be/fRBz2cw8Zyk?si=AZK5L8eUTDjPYrq8",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-ad3be8df-2ce5-4948-aa88-ff87ffb69124-1735075931239-902168612.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075940/uploads/mbdakrxekneuhah9to2o.jpg",
+      "temporary_public_id": "mbdakrxekneuhah9to2o",
+      "likes": 0
+    },
+    {
+      "content_id": 6,
+      "media_type": "video",
+      "categories": [
+        "thriller"
+      ],
+      "media_description": "Clara, é uma rica , que mora em um lugar com vizinhos ricos, mas ela tem seu mundo virado de cabeça para baixo com a chegada inesperada do seu cunhado.",
+      "title": "O cunhado perigoso",
+      "posted_at": "2024-12-10 19:39:18",
+      "updated_at": "2024-12-24 18:27:11",
+      "link": "https://youtu.be/IfJoMkbWD7E?si=0IEbY13JMyjDnRYR",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-d64cf58b-4f49-4fe7-931a-ff045c6e04d5-1735075630057-300622454.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075639/uploads/ekpyv7cxg8qxzcgdae3f.jpg",
+      "temporary_public_id": "ekpyv7cxg8qxzcgdae3f",
+      "likes": 0
+    },
+    {
+      "content_id": 7,
+      "media_type": "video",
+      "categories": [
+        "comedy",
+        "romance"
+      ],
+      "media_description": "A dra. Emma Lloyd (Uma Thurman) possui um programa de rádio de sucesso, onde dá conselhos sentimentais. Emma defende sempre o amor racional, apresentando suas teses em seu livro re... ",
+      "title": "Marido por acaso",
+      "posted_at": "2024-12-10 19:39:28",
+      "updated_at": "2024-12-24 18:32:27",
+      "link": "https://youtu.be/2pf8CNTpQb8?si=CCSNwpNzharzTmie",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-e1aeec46-b21f-409d-8caf-3fbe9745fa87-1735075946787-177007722.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075955/uploads/eopd2m0dgjzlycxboqgh.jpg",
+      "temporary_public_id": "eopd2m0dgjzlycxboqgh",
+      "likes": 0
+    },
+    {
+      "content_id": 8,
+      "media_type": "video",
+      "categories": [
+        "romance"
+      ],
+      "media_description": "TLauren (Danielle Panabaker) é contratada para escrever o livro de receitas de um famoso chef, Kevin Durant (Shawn Roberts). Durante a escrita, os dois desenvolverão uma afeição qu... ",
+      "title": "As receitas de amor",
+      "posted_at": "2024-12-10 19:39:43",
+      "updated_at": "2024-12-24 18:33:04",
+      "link": "https://youtu.be/kHebdHQ048M?si=c6OsYcPDtol0sffu",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-f1b34534-249e-4a8a-a775-61a43724d4a7-1735075983347-136224855.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735075991/uploads/ngdqxjei0xurhvad7n0c.jpg",
+      "temporary_public_id": "ngdqxjei0xurhvad7n0c",
+      "likes": 0
+    },
+    {
+      "content_id": 9,
+      "media_type": "video",
+      "categories": [
+        "terror"
+      ],
+      "media_description": "Catherine e sua família se mudam para uma casa que antes abrigava uma igreja. Em pouco tempo, fanáticos religiosos surgem, segredos são revelados e uma entidade maligna retorna par... ",
+      "title": "O mistério do convento 2",
+      "posted_at": "2024-12-11 15:38:47",
+      "updated_at": "2024-12-24 18:33:18",
+      "link": "https://youtu.be/EViwIElwEjU?si=QayO8aab_HpRfUyq",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-4a3acad4-6515-4fff-b378-ebe8ad939b9c-1735075997329-89122188.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735076006/uploads/vj6fqnamgkkgp1yzvifc.jpg",
+      "temporary_public_id": "vj6fqnamgkkgp1yzvifc",
+      "likes": 1
+    },
+    {
+      "content_id": 10,
+      "media_type": "video",
+      "categories": [
+        "terror"
+      ],
+      "media_description": "Em um grupo de estudantes universitários, em busca de novas emoções, se muda para uma antiga mansão com uma história sombria. Entre eles, destaca-se Tarin, que começa a ser persegu... ",
+      "title": "Mistério em uma casa antiga",
+      "posted_at": "2024-12-11 15:44:11",
+      "updated_at": "2024-12-24 18:33:40",
+      "link": "https://youtu.be/vGdRQ7X7z0k?si=dkMBttoX06dHLwTi",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-3ec3cbb7-d30a-4d45-bf52-73e0071597fd-1735076019001-176859987.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735076027/uploads/uxyewqe2y9oqdrzg3za3.jpg",
+      "temporary_public_id": "uxyewqe2y9oqdrzg3za3",
+      "likes": 1
+    },
+    {
+      "content_id": 11,
+      "media_type": "video",
+      "categories": [
+        "action"
+      ],
+      "media_description": "Em Velozes & Furiosos 5: Operação Rio, Dominic Toretto (Vin Diesel) foi resgatado da prisão por sua irmã Mia (Jordana Brewster) e Brian O'Conner (Paul Walker), que realizam um ousa... ",
+      "title": "Velozes e furiosos 5: Operação Rio",
+      "posted_at": "2024-12-11 18:19:31",
+      "updated_at": "2024-12-24 17:39:07",
+      "link": "https://youtu.be/rc4k0Y_-9qU?si=7WJndY1j34rCy_Yg",
+      "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-02da2c43-35e3-4231-941c-8d27b28f6e72-1735072746014-990036758.jpg",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735072755/uploads/hk2e2ulgrjpnlw9clexl.jpg",
+      "temporary_public_id": "hk2e2ulgrjpnlw9clexl",
+      "likes": 1
+    }
+  ]
+}
