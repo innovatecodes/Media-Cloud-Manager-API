@@ -71,8 +71,6 @@
     ```
     ```bash
         GET http://localhost:8081/v1/api/media?category=movies
-    ```
-    ```bash
         GET http://localhost:8081/v1/api/media?terms=O%20cunhado%20perigoso
     ```
      - #### Exemplo de resposta:
