@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { TubeServerManagerService } from "../services/tube-server-manager.service";
 import { StatusCode } from "../utils/enums";
+import { MediaCloudManagerService } from "../services/media-cloud-manager.service";
 
-export class TubeServerManagerController {
-  public static async getAll(req: Request, res: Response, next: NextFunction) {
+export class MediaCloudManagerController {
+  public static async getAllMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await TubeServerManagerService.getAll(req, res);
+      const data = await MediaCloudManagerService.getAllMediaContent(req, res);
       res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {
@@ -15,7 +15,7 @@ export class TubeServerManagerController {
 
   public static async getMediaContentById(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await TubeServerManagerService.getMediaContentById(
+      const data = await MediaCloudManagerService.getMediaContentById(
         Number(req.params.id)
       );
       res.status(StatusCode.OK).json(data);
@@ -27,7 +27,7 @@ export class TubeServerManagerController {
 
   public static async createMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await TubeServerManagerService.createMediaContent(req, res);
+      const data = await MediaCloudManagerService.createMediaContent(req, res);
       res.status(StatusCode.CREATED).json(data);
       return;
     } catch (error) {
@@ -35,19 +35,9 @@ export class TubeServerManagerController {
     }
   }
 
-  public static async updateMediaContent(req: Request, res: Response, next: NextFunction) {
+  public static async updatePartialMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await TubeServerManagerService.updateMediaContent(Number(req.params.id), req, res);
-      res.status(StatusCode.OK).json(data);
-      return;
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  public static async updateImageFile(req: Request, res: Response, next: NextFunction) {
-    try {
-      const data = await TubeServerManagerService.updateImageFile(Number(req.params.id), req, res);
+      const data = await MediaCloudManagerService.updatePartialMediaContent(Number(req.params.id), req, res);
       res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {
@@ -57,7 +47,7 @@ export class TubeServerManagerController {
 
   public static async deleteMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
-      await TubeServerManagerService.deleteMediaContent(Number(req.params.id));
+      await MediaCloudManagerService.deleteMediaContent(Number(req.params.id));
       res.status(StatusCode.NO_CONTENT).end();
       return;
     } catch (error) {

@@ -1,5 +1,5 @@
 import express from "express";
-import { routes } from "./app/routes/tube-server-manager.routes";
+import { routes } from "./app/routes/media-cloud-manager.routes";
 import path from "path";
 import cors from 'cors';
 import { ErrorMiddleware } from "./app/middlewares/error.middleware";
@@ -21,4 +21,5 @@ app.use(routes);
 
 // Middleware de erros personalizados
 new ErrorMiddleware().setError(app);
+
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tube Server Manager - API</title>
+    <title>Media Cloud Manager</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -22,7 +22,7 @@
   </head>
   <body>
     <header class="container">
-      <h1 class="text-left display-4 mt-5">Tube Server Manager - API</h1>
+      <h1 class="text-left display-4 mt-5">Media Cloud Manager</h1>
     </header>
 
     <main class="container">
@@ -32,7 +32,7 @@
             <strong>Description:</strong>
             <ol>
               <li>
-                A API permite gerenciar e listar mídias do YouTube, como vídeos,
+                A API permite gerenciar e listar mídias, como vídeos,
                 séries e músicas.
               </li>
               <li>
@@ -82,14 +82,15 @@
               autenticados, permitindo consultas públicas aos dados.
             </p>
             <ul style="list-style: none;">
-              <li>GET <a href="/api/v1/media">/api/v1/media</a></li>
-              <li>GET <a href="/api/v1/media/1">/api/v1/media/1</a></li>
-              <li>GET <a href="/api/v1/media?category=terror">/api/v1/media?category=terror</a></li>
-              <li>GET <a href="/api/v1/media?terms=velozes">/api/v1/media?terms=velozes</a></li>
-              <li>POST <a >/api/v1/media</a></li>
-              <li>PUT <a >/api/v1/media/1</a></li>
-              <li>PATCH <a >/api/v1/media/1</a></li>
-              <li>DELETE <a >/api/v1/media/1</a></li>
+              <li>GET <a href="/v1/api/media">/v1/api/media</a></li>
+              <li>GET <a href="/v1/api/media/1">/v1/api/media/1</a></li>
+              <li>GET <a href="/v1/api/media?genre=action">/v1/api/media?genre=action</a></li>
+              <li>GET <a href="/v1/api/media?category=movies">/v1/api/media?category=movies</a></li>
+              <li>GET <a href="/v1/api/media?terms=velozes">/v1/api/media?terms=velozes</a></li>
+              <li>POST <a >/v1/api/media</a></li>
+              <li>PUT <a >/v1/api/media/1</a></li>
+              <li>PATCH <a >/v1/api/media/1</a></li>
+              <li>DELETE <a >/v1/api/media/1</a></li>
             </ul>
           </div>
         </ul>

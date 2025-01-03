@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { ICorsOptions } from "../interfaces/tube-server-manager.interface";
+import { ICorsOptions } from "../interfaces/media-cloud-manager.interface";
 import { StatusCode, HttpMethod } from "./enums";
 
 // Define as opções para a política CORS (Cross-Origin Resource Sharing)
