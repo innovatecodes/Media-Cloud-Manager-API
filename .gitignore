@@ -1,5 +1,4 @@
 /node_modules
-/src/app/database/sql
 # Ignorar todos os arquivos .env
 .env*
 
