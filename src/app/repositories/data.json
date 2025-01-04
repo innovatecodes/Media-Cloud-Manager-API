@@ -222,24 +222,6 @@
       "default_image_file": "http://localhost:8081/uploads/default-image-file-fb1db247-7175-4301-a17e-82e4b07e9345-1735945614247-549017193.jpg",
       "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835583/uploads/aly1e162hasqkm2cphgx.jpg",
       "temporary_public_id": "aly1e162hasqkm2cphgx"
-    },
-    {
-      "media_id": 14,
-      "genres": [
-        "romance"
-      ],
-      "categories": [
-        "movies",
-        "films & series"
-      ],
-      "media_description": "\"Loneliness 3 - 4\" sugere que é uma série de 2 episódios com o tema romance, que pode abordar aspectos de solidão, relacionamentos amorosos ou experiências emocionais de seus personagens.",
-      "title": "Testando o titulo 3",
-      "media_posted_at": "2025-01-03 20:40:22",
-      "media_updated_at": "2025-01-03 20:53:29",
-      "link": "https://www.dailymotion.com/video/x8ocl33",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-c6ccfa0f-3bc1-4fe5-88f6-b16a71979273-1735947930782-690914257.webp",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735947944/uploads/bt74uwr15s4sklgd8i0m.webp",
-      "temporary_public_id": "bt74uwr15s4sklgd8i0m"
     }
   ]
 }
