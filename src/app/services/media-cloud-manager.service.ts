@@ -19,8 +19,12 @@ export class MediaCloudManagerService {
       const filteredCategory = (req.query.category as string)?.toLowerCase();
       const filteredTerms = (removeAccents(req.query.terms as string)).toLowerCase();
       const filteredGenre = (req.query.genre as string)?.toLowerCase();
-      const hasQueryParams = (search.search.includes("genre") ? 'genre' : search.search.includes("category") ? 'category' : search.search.includes("terms") ? 'terms' : ""); // (Object.keys((req.query)).includes("category") ? 'category' : Object.keys(req.query).includes("terms") ? 'terms' : undefined);
-      const searchParamExists = search.searchParams.has('category') || search.searchParams.has('genre') || search.searchParams.has('terms');
+      const hasQueryParams = search.search.includes("genre") ? 'genre' :
+        search.search.includes("category") ? 'category' :
+          search.search.includes("terms") ? 'terms' : "";
+      // (Object.keys((req.query)).includes("category") ? 'category' : Object.keys(req.query).includes("terms") ? 'terms' : undefined);
+
+      const searchParamExists = search.searchParams.has('category') || search.searchParams.has('genre') || search.searchParams.has('terms') || search.searchParams.has('page');
       const searchParamValue = search.searchParams.get((initialKey.next().value as string)) ?? "";
       const searchMatches = (!data.data.some(q => q.media_description.indexOf(filteredTerms) !== -1) || !data.data.some(q => q.title.indexOf(filteredTerms) !== -1));
       const apiUrl = `${process.env.URL}${EndPoint.API}${EndPoint.MEDIA}`
@@ -40,7 +44,6 @@ export class MediaCloudManagerService {
         case 'genre':
         case 'category':
         case 'terms':
-
           if (filtered.length === 0) {
             if (!data.data.some(q => q.genres.indexOf(filteredGenre) !== -1) || !data.data.some(q => q.genres.indexOf(filteredGenre) !== -1) || searchMatches)
               if (searchParamValue)
@@ -55,9 +58,24 @@ export class MediaCloudManagerService {
           break;
       }
 
+      let page = Math.max(1, Number(req.query.page) || 1);
+      const totalItems = data.data.length;
+      const fetchNextRowsCount = 5;
+      const numberOfPages = Math.ceil(totalItems / fetchNextRowsCount);
+      const offset = (page - 1) * fetchNextRowsCount;
+
+      if (search.searchParams.has('page')) {
+        if (page > numberOfPages) {
+          page = numberOfPages;
+          return res?.redirect(StatusCode.FOUND, `${finalUrl}?page=${page}`);
+        }; 
+        return data.data.slice(offset, offset + fetchNextRowsCount)
+      }
+
       return hasQueryParams ? filtered.length > 1 ? filtered : filtered[0] : await MediaCloudManagerRepository.writeToFile(
         `Busca não encontrada!`,
-        data
+        data,
+        // data.data.slice(offset, offset + fetchNextRowsCount)
       );
     } catch (error) {
       throw error;
@@ -125,7 +143,8 @@ export class MediaCloudManagerService {
       data.data[index].cloudinary_secure_url = (res?.locals as { secure_url: string }).secure_url ?? data.data[index].cloudinary_secure_url;
       data.data[index].temporary_public_id = (res?.locals as { public_id: string }).public_id?.replace('uploads/', '') ?? data.data[index].temporary_public_id;
 
-      return await MediaCloudManagerRepository.writeToFile("Erro ao tentar atualizar os dados!", data);
+      await MediaCloudManagerRepository.writeToFile("Erro ao tentar atualizar os dados!", data);
+      return data.data[index];
     } catch (error) {
       throw error;
     }

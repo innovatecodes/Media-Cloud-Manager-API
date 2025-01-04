@@ -57,16 +57,20 @@
         ]          
     ```
 
-### `GET /v1/api/media?genre=action` ou `GET /v1/api/media?category=movies` ou `GET /v1/api/media?terms=?terms=O%20cunhado%20perigoso` 
-- **Descrição**: Realiza uma pesquisa de mídia com base no gênero, categoria ou termo fornecido.
+### `GET /v1/api/media?genre=action` 
+### `GET /v1/api/media?category=movies` 
+### `GET /v1/api/media?terms=O%20cunhado%20perigoso` 
+### `GET /v1/api/media?page=2`
+- **Descrição**:  Realiza uma pesquisa de mídia com base no gênero, categoria, termo fornecido ou realiza paginação na listagem geral de mídias.
 - **Método HTTP**: GET
 - **Parâmetros**:
 - - **1**: `genre` - Filtro por gênero (opcional).
   - **2**: `category` - Filtro por categoria (opcional).
   - **3**: `terms` - Filtro por termo de busca (opcional).
-- **Resposta esperada**: Retorna uma lista de mídia(s) correspondente(s) ao tipo de pesquisa.
+  - **4**: `page` -  Número da página para paginação (opcional).  
+- **Resposta esperada**: Retorna uma lista de mídias correspondente ao tipo de pesquisa ou à página selecionada, com os dados paginados se o parâmetro `page` estiver presente.
   - ### Exemplo de requisição:
-  -  ```bash
+     ```bash
         GET http://localhost:8081/v1/api/media?genre=action
     ```
     ```bash
@@ -74,6 +78,9 @@
     ```
     ```bash
         GET http://localhost:8081/v1/api/media?terms=O%20cunhado%20perigoso
+    ```
+    ```bash
+        GET http://localhost:8081/v1/api/media?page=2
     ```
      - #### Exemplo de resposta:
     ```json

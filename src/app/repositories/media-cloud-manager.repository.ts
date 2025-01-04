@@ -1,5 +1,5 @@
 import { readFile, writeFile, unlink } from "node:fs";
-import { IData } from "../interfaces/media-cloud-manager.interface";
+import { IData, IMedia } from "../interfaces/media-cloud-manager.interface";
 import { InternalServerError } from "../errors/internal-server.error";
 // import { Buffer } from "node:buffer";
 import { inMemoryDataPath } from "../utils/paths";
@@ -19,14 +19,14 @@ export class MediaCloudManagerRepository {
     });
   }
 
-  public static async writeToFile(message: string, data: IData) {
+  public static async writeToFile(message: string, data: IData, paginatedMediaData?: IMedia<string>[]) {
     return new Promise((resolve, reject) => {
       writeFile(
         inMemoryDataPath,
         JSON.stringify(data, null, 2),
         (error) => {
           if (error) return reject(new InternalServerError(message));
-          resolve(data.data);
+          resolve(data /**paginatedMediaData */);
         }
       );
     });

@@ -28,9 +28,9 @@
       "media_description": "Prestes a competir em um importante concurso culinário, Ária, uma confeteira talentosa, vê seus planos desmoronarem quando seu parceiro a abandona poucos dias antes do evento. Desesperada, ela encontra apoio em um charmoso pai solteiro que a ajuda a descobrir não apenas um ingrediente secreto para sua receita,  mas também o caminho para a verdadeira felicidade. Confeteira Desesperada Encontra o Ingrediente Secreto da Felicidade.",
       "title": "Por amor ao chocolate",
       "media_posted_at": "2024-12-10 19:38:04",
-      "media_updated_at": "2025-01-02 13:37:17",
+      "media_updated_at": "2025-01-03 20:05:05",
       "link": "https://youtu.be/Dv5J-fAZu0E?si=jslhtU7R1kOqU3Fc",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-d5cb10c6-9785-4dda-89d4-932465d4e9d8-1735835835796-508018700.jpg",
+      "default_image_file": "http://localhost:8081/uploads/default-image-file-cd9590c2-9711-4936-ad78-15b8446b87da-1735945504139-754950445.jpg",
       "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835847/uploads/hmbeltpjvnz9cyimyror.jpg",
       "temporary_public_id": "hmbeltpjvnz9cyimyror"
     },
@@ -45,9 +45,9 @@
       "media_description": "Uma cerimonialista talentosa e dedicada, que organiza noivados impecáveis, enfrenta um desafio inesperado em sua vida amorosa e profissional. Enquanto prepara a festa mais importante de sua carreira, surge um homem que pode transformar sua vida em um verdadeiro desastre. No entanto, ele também pode ser a chave para o amor e a felicidade que ela sempre desejou, mas nunca esperava encontrar.",
       "title": "Como encontrar alguém para sempre",
       "media_posted_at": "2024-12-10 19:38:39",
-      "media_updated_at": "2025-01-02 13:36:51",
+      "media_updated_at": "2025-01-03 20:05:46",
       "link": "https://youtu.be/7J9wbti3bkA?si=EWEOS0SRGOPfYzfg",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-d4a2b39c-4536-4af5-a29f-40bc3685df4e-1735835809963-126075384.jpg",
+      "default_image_file": "http://localhost:8081/uploads/default-image-file-466506c1-ccc8-4324-a495-7820f9439966-1735945544651-286500719.jpg",
       "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835821/uploads/txtwxlgpsmh1y3ybztzh.jpg",
       "temporary_public_id": "txtwxlgpsmh1y3ybztzh"
     },
@@ -217,11 +217,29 @@
       "media_description": "\"Loneliness 3 - 4\" sugere que é uma série de 2 episódios com o tema romance, que pode abordar aspectos de solidão, relacionamentos amorosos ou experiências emocionais de seus personagens.",
       "title": "Loneliness 3 -4",
       "media_posted_at": "2025-01-02 13:16:06",
-      "media_updated_at": "2025-01-02 13:32:53",
+      "media_updated_at": "2025-01-03 20:06:55",
       "link": "https://www.dailymotion.com/video/x8ocl33",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-d5054fdd-a8a6-4d9e-852d-fe7118c58e7f-1735835571837-530365293.jpg",
+      "default_image_file": "http://localhost:8081/uploads/default-image-file-fb1db247-7175-4301-a17e-82e4b07e9345-1735945614247-549017193.jpg",
       "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835583/uploads/aly1e162hasqkm2cphgx.jpg",
       "temporary_public_id": "aly1e162hasqkm2cphgx"
+    },
+    {
+      "media_id": 14,
+      "genres": [
+        "romance"
+      ],
+      "categories": [
+        "movies",
+        "films & series"
+      ],
+      "media_description": "\"Loneliness 3 - 4\" sugere que é uma série de 2 episódios com o tema romance, que pode abordar aspectos de solidão, relacionamentos amorosos ou experiências emocionais de seus personagens.",
+      "title": "Testando o titulo 3",
+      "media_posted_at": "2025-01-03 20:40:22",
+      "media_updated_at": "2025-01-03 20:53:29",
+      "link": "https://www.dailymotion.com/video/x8ocl33",
+      "default_image_file": "http://localhost:8081/uploads/default-image-file-c6ccfa0f-3bc1-4fe5-88f6-b16a71979273-1735947930782-690914257.webp",
+      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735947944/uploads/bt74uwr15s4sklgd8i0m.webp",
+      "temporary_public_id": "bt74uwr15s4sklgd8i0m"
     }
   ]
 }

@@ -3,6 +3,7 @@ import { StatusCode } from "../utils/enums";
 import { MediaCloudManagerService } from "../services/media-cloud-manager.service";
 
 export class MediaCloudManagerController {
+  
   public static async getAllMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await MediaCloudManagerService.getAllMediaContent(req, res);
