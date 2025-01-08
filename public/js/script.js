@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         year: 'numeric'    // Ano com quatro dígitos
     });
 
-    document.getElementById('year').textContent = 2025;
+    document.getElementById('year').textContent = 2024;
     document.getElementById('updatedAt').textContent = 'N/A' // date.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'});
     document.getElementById('version').textContent = '2.0';
-    if (property.year > 2025) document.getElementById('nextYear').textContent = ` - ${property.year}`;
+    if (property.year > 2024) document.getElementById('nextYear').textContent = ` - ${property.year}`;
 })
 
 
