@@ -21,15 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formatDate = () => `${property.year}-${property.month}-${property.day}`; // Output => 'YYYY-MM-DD'
 
-    createAt.textContent = date.toLocaleDateString('pt-BR', {
-        day: '2-digit',    // Garante dois dígitos para o dia
-        month: '2-digit',  // Garante dois dígitos para o mês
-        year: 'numeric'    // Ano com quatro dígitos
-    });
-
+    createAt.textContent = new Date("2024-12-10").toLocaleDateString();
     document.getElementById('year').textContent = 2024;
-    document.getElementById('updatedAt').textContent = 'N/A' // date.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'});
+    document.getElementById('updatedAt').textContent = new Date("2025-01-07").toLocaleDateString();
     document.getElementById('version').textContent = '2.0';
+    
     if (property.year > 2024) document.getElementById('nextYear').textContent = ` - ${property.year}`;
 })
 
