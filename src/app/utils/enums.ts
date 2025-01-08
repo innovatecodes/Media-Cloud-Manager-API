@@ -2,8 +2,6 @@ import { loadNodeEnvironment } from "./dotenv.config";
 
 loadNodeEnvironment();
 
-const version = 'v1';
-
 export enum StatusCode {
   OK = 200, // Requisição bem-sucedida
   CREATED = 201, // Recurso criado com sucesso
@@ -44,9 +42,9 @@ export enum HttpMethod {
 
 export const EndPoint = {
   ROOT: `${process.env.URL as string}`,
-  API: `/${version}/api`,
-  MEDIA: "/media",
-  MEDIA_BY_ID: "/media/:id",
+  MEDIA: "/api/media",
+  SEARCH: "/api/media/search",
+  MEDIA_BY_ID: "/api/media/:id",
 } as const;
 
 export enum ContentType {

@@ -9,74 +9,77 @@ import { loadNodeEnvironment } from "../utils/dotenv.config";
 import { parseUrlSearch } from "../utils/parse-url-search";
 import { removeWhiteSpace } from "../utils/remove-white-space";
 import { MediaCloudManagerRepository } from "../repositories/media-cloud-manager.repository";
+import { paginateMediaContent } from "../utils/paginate-media-content";
+
 loadNodeEnvironment();
 
 export class MediaCloudManagerService {
-  public static async getAllMediaContent(req: Request = {} as Request, res: Response = {} as Response) {
+  public static async getAllMediaContent(req: Request, res: Response) {
+    try {
+      const data = await MediaCloudManagerRepository.loadDataAfterReadFile() as IData;
+      const paginatedData = paginateMediaContent(req, res, 1, 10, data);
+      return paginatedData;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  public static async search(req: Request = {} as Request, res: Response = {} as Response) {
     try {
       const data = await MediaCloudManagerRepository.loadDataAfterReadFile() as IData;
       const { search, initialKey } = parseUrlSearch(req);
-      const filteredCategory = (req.query.category as string)?.toLowerCase();
-      const filteredTerms = (removeAccents(req.query.terms as string)).toLowerCase();
-      const filteredGenre = (req.query.genre as string)?.toLowerCase();
-      const hasQueryParams = search.search.includes("genre") ? 'genre' :
-        search.search.includes("category") ? 'category' :
-          search.search.includes("terms") ? 'terms' : "";
-      // (Object.keys((req.query)).includes("category") ? 'category' : Object.keys(req.query).includes("terms") ? 'terms' : undefined);
-
-      const searchParamExists = search.searchParams.has('category') || search.searchParams.has('genre') || search.searchParams.has('terms') || search.searchParams.has('page');
-      const searchParamValue = search.searchParams.get((initialKey.next().value as string)) ?? "";
-      const searchMatches = (!data.data.some(q => q.media_description.indexOf(filteredTerms) !== -1) || !data.data.some(q => q.title.indexOf(filteredTerms) !== -1));
-      const apiUrl = `${process.env.URL}${EndPoint.API}${EndPoint.MEDIA}`
+      const reqByGenre = (req.query.genre as string)?.toLowerCase();
+      const reqByCategory = (req.query.category as string)?.toLowerCase();
+      const reqBySearch = (removeAccents(req.query.search as string))?.toLowerCase();
+      const hasSearchParams = search.searchParams.has('category') || search.searchParams.has('genre') || search.searchParams.has('search');
+      const apiUrl = `${process.env.URL}${EndPoint.MEDIA}`;
       const finalUrl = apiUrl.endsWith('?') ? apiUrl.split('?').at(0) : apiUrl;
 
-      const filtered = data.data.filter(q => {
-        if (hasQueryParams.toLowerCase() === 'genre')
-          return Array.isArray(q.genres) && q.genres.some(c => c.toLowerCase().includes(removeWhiteSpace(filteredGenre)) && filteredGenre.length > 1);
-        if (hasQueryParams.toLowerCase() === 'category')
-          return Array.isArray(q.genres) && q.categories.some(c => c.toLowerCase().includes(removeWhiteSpace(filteredCategory)) && filteredCategory.length > 1);
-        if (hasQueryParams.toLowerCase() === 'terms')
-          return (removeAccents(q.media_description.toLowerCase()).indexOf(removeWhiteSpace(filteredTerms)) !== -1) || (removeAccents(q.title.toLowerCase()).indexOf(removeWhiteSpace(filteredTerms)) !== -1) && filteredTerms.length > 1;
+      const filtered: IMedia<string>[] = data.data.filter(q => {
+        if ('genre' in req.query && 'category' in req.query)
+          return q.genres.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByGenre)) && reqByGenre.length > 0) && q.categories.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByCategory)) && reqByCategory.length > 0);
+
+        if ('genre' in req.query)
+          return q.genres.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByGenre)) && reqByGenre.length > 0);
+
+        if ('category' in req.query)
+          return q.categories.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByCategory)) && reqByCategory.length > 0);
+
+        if ('search' in req.query) {
+          const reqBySearchSanitized = removeWhiteSpace(reqBySearch);
+          if (reqBySearchSanitized.length <= 0) return;
+          else return (removeAccents(q.media_description.toLowerCase()).includes(reqBySearchSanitized)) || (removeAccents(q.title.toLowerCase()).includes(reqBySearchSanitized));
+        }
         return false; // []
       });
 
-      switch (hasQueryParams) {
-        case 'genre':
-        case 'category':
-        case 'terms':
-          if (filtered.length === 0) {
-            if (!data.data.some(q => q.genres.indexOf(filteredGenre) !== -1) || !data.data.some(q => q.genres.indexOf(filteredGenre) !== -1) || searchMatches)
-              if (searchParamValue)
-                throw new ValidationError(`${filtered.length} resultado para \"${removeWhiteSpace(searchParamValue)}\"!`);
-              else
-                return res.redirect(StatusCode.FOUND, `${finalUrl}`);
-          }
-          break;
-        default:
-          if ((search.href.includes('?') && !searchParamExists))
-            return res.redirect(StatusCode.FOUND, `${finalUrl}`); // throw new ValidationError(`O parãmeto ${clearString(initialKey.next().value as string) /** Object.keys(req.query).shift() */} não é válido!`);
-          break;
+      const hasQueryString = (...args: string[]): boolean => args.includes('genre') || args.includes('category') || args.includes('search');
+      if (hasQueryString(...Object.keys(req.query))) {
+        if (filtered.length === 0) {
+      
+          if ('genre' in (req.query) && ('category' in req.query))
+            throw new ValidationError(`Infelizmente, não encontramos resultados para sua busca!`);
+
+          if ('genre' in req.query && !('category' in req.query) && reqByGenre.length > 0)
+            throw new ValidationError(`Nenhum resultado encontrado para o gênero \"${removeWhiteSpace(reqByGenre)}\"!`);
+          else if ('genre' in req.query && !('category' in req.query) && reqByGenre.length === 0)
+            return res.redirect(StatusCode.FOUND, `${finalUrl}`); 
+
+          if ('category' in req.query && !('genre' in req.query) && reqByCategory.length > 0)
+            throw new ValidationError(`Nenhum resultado encontrado para a categoria \"${removeWhiteSpace(reqByCategory)}\"!`);
+          else if ('category' in req.query && !('genre' in req.query) && reqByCategory.length === 0)
+            return res.redirect(StatusCode.FOUND, `${finalUrl}`); 
+
+          if ('search' in (req.query) && reqBySearch.length > 0)
+            throw new ValidationError(`Nenhum resultado encontrado para \"${removeWhiteSpace(reqBySearch)}\"!`);
+          else return res.redirect(StatusCode.FOUND, `${finalUrl}`); // throw new ValidationError(`É necessário especificar o tipo de conteúdo para prosseguir com a busca!`);
+        }
       }
-
-      let page = Math.max(1, Number(req.query.page) || 1);
-      const totalItems = data.data.length;
-      const fetchNextRowsCount = 5;
-      const numberOfPages = Math.ceil(totalItems / fetchNextRowsCount);
-      const offset = (page - 1) * fetchNextRowsCount;
-
-      if (search.searchParams.has('page')) {
-        if (page > numberOfPages) {
-          page = numberOfPages;
-          return res?.redirect(StatusCode.FOUND, `${finalUrl}?page=${page}`);
-        }; 
-        return data.data.slice(offset, offset + fetchNextRowsCount)
-      }
-
-      return hasQueryParams ? filtered.length > 1 ? filtered : filtered[0] : await MediaCloudManagerRepository.writeToFile(
-        `Busca não encontrada!`,
-        data,
-        // data.data.slice(offset, offset + fetchNextRowsCount)
-      );
+      else if ((search.href.includes('?') && !hasSearchParams)) {
+        return res.redirect(StatusCode.FOUND, `${finalUrl}`)
+      };
+    
+      return filtered && filtered.length > 1 ? filtered : filtered[0];
     } catch (error) {
       throw error;
     }
@@ -172,6 +175,62 @@ export class MediaCloudManagerService {
     if (!req.body.title) throw new ValidationError("O campo 'título' não pode ser vazio!");
     if (!req.body.link) throw new ValidationError("O campo 'link' não pode ser vazio!");
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

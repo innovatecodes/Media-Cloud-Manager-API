@@ -1,12 +1,23 @@
+
+
 import { NextFunction, Request, Response } from "express";
 import { StatusCode } from "../utils/enums";
 import { MediaCloudManagerService } from "../services/media-cloud-manager.service";
 
 export class MediaCloudManagerController {
-  
   public static async getAllMediaContent(req: Request, res: Response, next: NextFunction) {
     try {
       const data = await MediaCloudManagerService.getAllMediaContent(req, res);
+      res.status(StatusCode.OK).json(data);
+      return;
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  public static async search(req: Request, res: Response, next: NextFunction) {
+    try {
+      const data = await MediaCloudManagerService.search(req, res);
       res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {

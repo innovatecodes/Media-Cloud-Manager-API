@@ -14,8 +14,9 @@ routes.get("/", (req: Request, res: Response) => {
     res.status(StatusCode.OK).sendFile(filePath);
 })
 
-routes.get(`${EndPoint.API}${EndPoint.MEDIA}`, MediaCloudManagerController.getAllMediaContent);
-routes.get(`${EndPoint.API}${EndPoint.MEDIA_BY_ID}`, MediaCloudManagerController.getMediaContentById);
-routes.post(`${EndPoint.API}${EndPoint.MEDIA}`, apiKeyMiddleware, uploadMiddleware, CloudinaryMiddleware.insert, MediaCloudManagerController.createMediaContent);
-routes.patch(`${EndPoint.API}${EndPoint.MEDIA_BY_ID}`, apiKeyMiddleware, uploadMiddleware, CloudinaryMiddleware.update, MediaCloudManagerController.updatePartialMediaContent);
-routes.delete(`${EndPoint.API}${EndPoint.MEDIA_BY_ID}`, apiKeyMiddleware, CloudinaryMiddleware.delete, MediaCloudManagerController.deleteMediaContent);
+routes.get(`${EndPoint.MEDIA}`, MediaCloudManagerController.getAllMediaContent);
+routes.get(`${EndPoint.SEARCH}`, MediaCloudManagerController.search);
+routes.get(`${EndPoint.MEDIA_BY_ID}`, MediaCloudManagerController.getMediaContentById);
+routes.post(`${EndPoint.MEDIA}`, apiKeyMiddleware, uploadMiddleware, CloudinaryMiddleware.insert, MediaCloudManagerController.createMediaContent);
+routes.patch(`${EndPoint.MEDIA_BY_ID}`, apiKeyMiddleware, uploadMiddleware, CloudinaryMiddleware.update, MediaCloudManagerController.updatePartialMediaContent);
+routes.delete(`${EndPoint.MEDIA_BY_ID}`, apiKeyMiddleware, CloudinaryMiddleware.delete, MediaCloudManagerController.deleteMediaContent);

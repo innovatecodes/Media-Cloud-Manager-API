@@ -14,77 +14,79 @@
 
 ## Endpoints da API
 
-### `GET /v1/api/media/`
+### `GET /api/media/`
 - **Descrição**: Lista todas as mídias.
 - **Método HTTP**: GET
 - **Resposta esperada**: Retorna todos os registros de mídias.
   - #### Exemplo de requisição:
     ```bash
-        GET http://localhost:8081/v1/api/media/
+        GET http://localhost:8081/api/media/
     ```
   - #### Exemplo de resposta: 
     ```json
         [
             { "media_id": 1,
-            "genres": "video",
+            "genres": ["comedy"],
             "categories": [
-            "comedy"
+            "movies"
             ],
             "media_description": "O filme é baseado na peça homônima criada e estrelada pelo próprio Paulo e que levou milhões de espectadores ao teatro ao longo dos anos em cartaz.",
             "title": "Minha mãe é uma peça",
             "media_posted_at": "2024-12-13 11:11:48",
             "media_updated_at": "",
             "link": "https://youtu.be/xn0MWFAR1cY?si=hOZnqbbbQ2YBfmdC",
-            "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-98d8c367-1eae-4e84-b91e-1e26b519cc5d-1735075685178-148181922.jpg",
+            "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
              "cloudinary_secure_url": "",
              "temporary_public_id": "",
             },
             {
             "media_id": 2,
-            "genres": "video",
+            "genres": ["romance"],
             "categories": [
-                "romance"
+                "movies"
             ],
             "media_description": "Prestes a competir em um importante concurso culinário, Ária, uma confeteira talentosa, vê seus planos desmoronarem quando seu parceiro a abandona poucos dias antes do evento. Desesperada, ela encontra apoio em um charmoso pai solteiro que a ajuda a descobrir não apenas um ingrediente secreto para sua receita,  mas também o caminho para a verdadeira felicidade. Confeteira Desesperada Encontra o Ingrediente Secreto da Felicidade!",
             "title": "Por amor ao chocolate",
             "media_posted_at": "2024-12-13 11:13:48",
             "media_updated_at": "",
             "link": "https://youtu.be/Dv5J-fAZu0E?si=jslhtU7R1kOqU3Fc",
-            "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-2c98dfd7-efdf-4f33-9f8c-f6435480a1d6-1735075749840-650163747.jpg",
+            "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
              "cloudinary_secure_url": "",
              "temporary_public_id": "",
             }                       
         ]          
     ```
 
-### `GET /v1/api/media?genre=action` 
-### `GET /v1/api/media?category=movies` 
-### `GET /v1/api/media?terms=O%20cunhado%20perigoso` 
-### `GET /v1/api/media?page=2`
+### `GET /api/media/search?genre=action` 
+### `GET /api/media/search?category=movies` 
+### `GET /api/media/search?search=O%20cunhado%20perigoso` 
+### `GET /api/media?page=2`
 - **Descrição**:  Realiza uma pesquisa de mídia com base no gênero, categoria, termo fornecido ou realiza paginação na listagem geral de mídias.
 - **Método HTTP**: GET
 - **Parâmetros**:
 - - **1**: `genre` - Filtro por gênero (opcional).
   - **2**: `category` - Filtro por categoria (opcional).
-  - **3**: `terms` - Filtro por termo de busca (opcional).
+  - **3**: `search` - Filtro por busca (opcional).
   - **4**: `page` -  Número da página para paginação (opcional).  
 - **Resposta esperada**: Retorna uma lista de mídias correspondente ao tipo de pesquisa ou à página selecionada, com os dados paginados se o parâmetro `page` estiver presente.
-  - ### Exemplo de requisição:
-     ```bash
-        GET http://localhost:8081/v1/api/media?genre=action
-  - ```bash
-        GET http://localhost:8081/v1/api/media?category=movies
-  - ```bash
-        GET http://localhost:8081/v1/api/media?terms=O%20cunhado%20perigoso
+  - #### Exemplo de requisição:
+    ```bash
+        GET http://localhost:8081/api/media/search?genre=action
     ```
     ```bash
-        GET http://localhost:8081/v1/api/media?page=2
+        GET http://localhost:8081/api/media/search?category=movies
     ```
-     - #### Exemplo de resposta:
+    ```bash
+        GET http://localhost:8081/api/media/search?search=O%20cunhado%20perigoso
+    ```
+    ```bash
+        GET http://localhost:8081/api/media?page=2
+    ```
+  - #### Exemplo de resposta:
     ```json
         {
             "media_id": 11,
-            "genres": "action",
+            "genres": ["action"],
             "categories": [
                 "movies"
             ],
@@ -93,17 +95,17 @@
             "media_posted_at": "2024-12-13 11:19:31",
             "media_updated_at": "",
             "link": "https://youtu.be/rc4k0Y_-9qU?si=7WJndY1j34rCy_Yg",
-            "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-02da2c43-35e3-4231-941c-8d27b28f6e72-1735072746014-990036758.jpg",
+            "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
              "cloudinary_secure_url": "",
              "temporary_public_id": "",
         }              
     ```
 
-    - #### Exemplo de resposta:
+  - #### Exemplo de resposta:
     ```json
         {
             "media_id": 6,
-            "genres": "thriller",
+            "genres": ["thriller"],
             "categories": [
                 "movies"
             ],
@@ -112,26 +114,26 @@
             "media_posted_at": "2024-12-13 12:23:30",
             "media_updated_at": "",
             "link": "https://youtu.be/IfJoMkbWD7E?si=0IEbY13JMyjDnRYR",
-            "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-d64cf58b-4f49-4fe7-931a-ff045c6e04d5-1735075630057-300622454.jpg",
+            "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
              "cloudinary_secure_url": "",
              "temporary_public_id": "",
         }              
     ```
 
-### `GET /v1/api/media/{id}`
+### `GET /api/media/{id}`
 - **Descrição**: Busca uma mídia específica pelo id.
 - **Método HTTP**: GET
 - **Parâmetros**: `{id}` - Id da mídia (vídeo, música, série, etc.) a ser buscada.
 - **Resposta esperada**: Retorna a mídia correspondente ao id informado.
   - #### Exemplo de requisição:
     ```bash
-        GET http://localhost:8081/v1/api/media/1
+        GET http://localhost:8081/api/media/1
     ```
   - #### Exemplo de resposta:
     ```json
         {
             "media_id": 1,
-            "genres": "comedy",
+            "genres": ["comedy"],
             "categories": [
                 "movies"
             ],
@@ -140,7 +142,7 @@
             "media_posted_at": "2024-12-13 11:11:48",
             "media_updated_at": "",
             "link": "https://youtu.be/xn0MWFAR1cY?si=hOZnqbbbQ2YBfmdC",
-            "default_image_file": "http://127.0.0.1:8081/uploads/default-image-file-98d8c367-1eae-4e84-b91e-1e26b519cc5d-1735075685178-148181922.jpg",
+            "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
             "cloudinary_secure_url": "",
             "temporary_public_id": "",
         }

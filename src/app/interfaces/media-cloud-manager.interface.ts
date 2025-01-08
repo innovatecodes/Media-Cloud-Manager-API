@@ -30,6 +30,18 @@ export interface ICustomHeader<T extends Record<string, ContentType> | Record<st
   setHeader: T;
 }
 
+export interface IPaginationDetails {
+  page?: number,
+  totalItems: number;
+  limitPerPage: number;
+  numberOfPages: number;
+  offset: number;  
+}
+
+export interface IPaginationResponse<T> {
+  paginationDetails: IPaginationDetails;
+  paginationResults: T;
+}
 
 
 
