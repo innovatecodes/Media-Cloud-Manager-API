@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // const formatDate = () => `${property.year}-${property.month}-${property.day}`; // Output => 'YYYY-MM-DD'
 
     document.getElementById('year').textContent = 2024;
-    // document.getElementById('updatedAt').textContent = new Date("2025-01-07").toLocaleDateString('pt-BR');
     document.getElementById('version').textContent = '2.0';
 
     if (property.year > 2024) document.getElementById('nextYear').textContent = ` - ${property.year}`;
