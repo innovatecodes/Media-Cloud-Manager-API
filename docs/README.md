@@ -3,8 +3,8 @@
 - **Descrição**: API que permite gerenciar e listar mídias, como vídeos, séries e músicas, projetada para simular o comportamento de uma aplicação em produção, utilizando dados mockados para fins de desenvolvimento e teste. Os dados mockados foram armazenados em um arquivo chamado data.json, que simula respostas de um banco de dados real.
 - **Versão**: 2.0
 - **Autor**: Ronaldo Lopes <contato@innovatecodes.com>
-- **Criado em**: 2024-12-04
-- **Última atualização**: 2025-01-07
+- **Criado em**: 04/12/2024
+- **Última atualização**: 07/01/2025
 
 ## Licença
 
