@@ -1,19 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
     const date = new Date();
     const createAt = document.getElementById('createdAt');
+
     const property = {
-        year: date.getFullYear(),
+        year: date.getFullYear(),  // Obtém o ano atual (ex: 2024).
         month: (date.getMonth() + 1).toString().padStart(2, "0"),
-        day: date.getDate().toString().padStart(2, "0")
-    }
+        /**
+         *  Obtém o mês atual (0-11, ajusta para 1-12), converte para string
+         *  e usa padStart(2, "0") para garantir que o mês tenha dois dígitos (ex: "01").
+         *  O padStart(2, "0") é usado para garantir que o mês e o dia tenham sempre dois caracteres,
+         *   adicionando um zero à esquerda quando necessário.
+         */
+        day: date.getDate().toString().padStart(2, "0"),
+        /**
+         * Obtém o dia do mês, converte para string e usa padStart(2, "0") para garantir que o dia tenha dois dígitos (ex: "05").
+         *  O padStart(2, "0") é usado para garantir que o mês e o dia tenham sempre dois caracteres,
+         * adicionando um zero à esquerda quando necessário.
+         */
+    };
+
     const formatDate = () => `${property.year}-${property.month}-${property.day}`; // Output => 'YYYY-MM-DD'
 
-    createAt.textContent = new Date("2024-12-10").toLocaleDateString();
-    document.getElementById('year').textContent = 2024;
-    document.getElementById('updatedAt').textContent = new Date("2025-01-07"/*formatDate() | date.getTime()*/).toLocaleDateString();
+    createAt.textContent = date.toLocaleDateString('pt-BR', {
+        day: '2-digit',    // Garante dois dígitos para o dia
+        month: '2-digit',  // Garante dois dígitos para o mês
+        year: 'numeric'    // Ano com quatro dígitos
+    });
 
-    if (property.year > 2024) document.getElementById('nextYear').textContent = ` - ${property.year}`;
+    document.getElementById('year').textContent = 2025;
+    document.getElementById('updatedAt').textContent = 'N/A' // date.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'});
+    document.getElementById('version').textContent = '2.0';
+    if (property.year > 2025) document.getElementById('nextYear').textContent = ` - ${property.year}`;
 })
+
+
+
 
 
 
