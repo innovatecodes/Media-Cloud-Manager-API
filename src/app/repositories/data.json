@@ -13,9 +13,9 @@
       "media_posted_at": "2024-12-10 19:37:37",
       "media_updated_at": "2025-01-02 13:37:35",
       "link": "https://youtu.be/xn0MWFAR1cY?si=hOZnqbbbQ2YBfmdC",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-592a0b92-7ad3-4570-91be-ffd7eb4a6188-1735835852965-113203257.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835864/uploads/injwy7y79gta4odwxsx3.jpg",
-      "temporary_public_id": "injwy7y79gta4odwxsx3"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 2,
@@ -30,9 +30,9 @@
       "media_posted_at": "2024-12-10 19:38:04",
       "media_updated_at": "2025-01-03 20:05:05",
       "link": "https://youtu.be/Dv5J-fAZu0E?si=jslhtU7R1kOqU3Fc",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-cd9590c2-9711-4936-ad78-15b8446b87da-1735945504139-754950445.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835847/uploads/hmbeltpjvnz9cyimyror.jpg",
-      "temporary_public_id": "hmbeltpjvnz9cyimyror"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 3,
@@ -47,9 +47,9 @@
       "media_posted_at": "2024-12-10 19:38:39",
       "media_updated_at": "2025-01-03 20:05:46",
       "link": "https://youtu.be/7J9wbti3bkA?si=EWEOS0SRGOPfYzfg",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-466506c1-ccc8-4324-a495-7820f9439966-1735945544651-286500719.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835821/uploads/txtwxlgpsmh1y3ybztzh.jpg",
-      "temporary_public_id": "txtwxlgpsmh1y3ybztzh"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 4,
@@ -64,9 +64,9 @@
       "media_posted_at": "2024-12-10 19:38:53",
       "media_updated_at": "2025-01-02 13:36:33",
       "link": "https://youtu.be/6IvnWvA0Ke0?si=teF0-CYbVKAmP5aG",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-a84898b8-fdf1-4df9-839b-d9c0b038ed45-1735835791676-99017146.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835803/uploads/xpazae9vf6iuoszsgfc2.jpg",
-      "temporary_public_id": "xpazae9vf6iuoszsgfc2"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 5,
@@ -81,9 +81,9 @@
       "media_posted_at": "2024-12-10 19:39:05",
       "media_updated_at": "2025-01-02 13:36:13",
       "link": "https://youtu.be/fRBz2cw8Zyk?si=AZK5L8eUTDjPYrq8",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-7ff1419c-f23e-4efc-85e7-c300fb709125-1735835771841-762060858.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835783/uploads/awaxpamzk9kpbamqs6zu.jpg",
-      "temporary_public_id": "awaxpamzk9kpbamqs6zu"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 6,
@@ -98,9 +98,9 @@
       "media_posted_at": "2024-12-10 19:39:18",
       "media_updated_at": "2025-01-02 13:35:59",
       "link": "https://youtu.be/IfJoMkbWD7E?si=0IEbY13JMyjDnRYR",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-373d27e1-9b94-47f3-a660-f1635ef798d3-1735835757259-862192010.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835768/uploads/jhgu4hpcweplrhgofz5f.jpg",
-      "temporary_public_id": "jhgu4hpcweplrhgofz5f"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 7,
@@ -116,9 +116,9 @@
       "media_posted_at": "2024-12-10 19:39:28",
       "media_updated_at": "2025-01-02 13:35:43",
       "link": "https://youtu.be/2pf8CNTpQb8?si=CCSNwpNzharzTmie",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-f654f1f2-b492-416c-98d1-399aef7da500-1735835741747-819686658.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835753/uploads/gfclcztzusgkzheuliag.jpg",
-      "temporary_public_id": "gfclcztzusgkzheuliag"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 8,
@@ -133,9 +133,9 @@
       "media_posted_at": "2024-12-10 19:39:43",
       "media_updated_at": "2025-01-02 13:35:29",
       "link": "https://youtu.be/kHebdHQ048M?si=c6OsYcPDtol0sffu",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-a17c8f90-f68c-4390-867a-6608ad8dd0b9-1735835727693-780889107.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835739/uploads/ppixhclyswmdksp4mmav.jpg",
-      "temporary_public_id": "ppixhclyswmdksp4mmav"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 9,
@@ -150,9 +150,9 @@
       "media_posted_at": "2024-12-11 15:38:47",
       "media_updated_at": "2025-01-02 13:35:03",
       "link": "https://youtu.be/EViwIElwEjU?si=QayO8aab_HpRfUyq",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-4832c3fe-bb41-4e56-927b-336e7140d876-1735835702327-109228373.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835713/uploads/w2og6hqwmhuwcqtwkvcj.jpg",
-      "temporary_public_id": "w2og6hqwmhuwcqtwkvcj"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 10,
@@ -167,9 +167,9 @@
       "media_posted_at": "2024-12-11 15:44:11",
       "media_updated_at": "2025-01-02 13:34:12",
       "link": "https://youtu.be/vGdRQ7X7z0k?si=dkMBttoX06dHLwTi",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-892ec207-f7b1-4c68-983f-0950f3e74ea7-1735835650182-362104218.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835661/uploads/cdxepioixlvlraq3jxyy.jpg",
-      "temporary_public_id": "cdxepioixlvlraq3jxyy"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 11,
@@ -184,9 +184,9 @@
       "media_posted_at": "2024-12-11 18:19:31",
       "media_updated_at": "2025-01-02 13:33:37",
       "link": "https://youtu.be/rc4k0Y_-9qU?si=7WJndY1j34rCy_Yg",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-a47c61d8-5f74-414b-8018-3cf63c5a5e92-1735835616022-931637949.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835627/uploads/y9ocyr57ezjmpmwmdqxi.jpg",
-      "temporary_public_id": "y9ocyr57ezjmpmwmdqxi"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 12,
@@ -202,9 +202,9 @@
       "media_posted_at": "2025-01-02 13:03:01",
       "media_updated_at": "2025-01-02 13:33:21",
       "link": "https://www.dailymotion.com/video/x8mofot",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-a13af27f-ef64-4601-b318-1859d55376ff-1735835599701-896140140.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835611/uploads/vsepinbjynu0ruffbv5v.jpg",
-      "temporary_public_id": "vsepinbjynu0ruffbv5v"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     },
     {
       "media_id": 13,
@@ -220,9 +220,9 @@
       "media_posted_at": "2025-01-02 13:16:06",
       "media_updated_at": "2025-01-03 20:06:55",
       "link": "https://www.dailymotion.com/video/x8ocl33",
-      "default_image_file": "http://localhost:8081/uploads/default-image-file-fb1db247-7175-4301-a17e-82e4b07e9345-1735945614247-549017193.jpg",
-      "cloudinary_secure_url": "https://res.cloudinary.com/dvmrjijue/image/upload/v1735835583/uploads/aly1e162hasqkm2cphgx.jpg",
-      "temporary_public_id": "aly1e162hasqkm2cphgx"
+      "default_image_file": "http://localhost:8081/uploads/no-image.jpg",
+      "cloudinary_secure_url": "",
+      "temporary_public_id": ""
     }
   ]
 }
