@@ -6,6 +6,7 @@
     * OBS: Certifique-se de instalar este pacote como dependência de desenvolvimento:
     * npm i @tsconfig/recommended
   */
+  
   "compilerOptions": { // Opções de configuração do compilador TypeScript.
     "target": "ES6", // Define a versão do ECMAScript para a qual o código será compilado. 
     "module": "CommonJS", // Define o sistema de módulos a ser usado. 
