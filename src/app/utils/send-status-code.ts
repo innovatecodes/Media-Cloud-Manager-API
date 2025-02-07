@@ -1,4 +1,4 @@
-import { StatusCode } from "./enums";
+import { StatusCode } from "./enums.js";
 
 export const sendStatusCodeMessage = (status: StatusCode): string => {
   let statusMessage: string = "";

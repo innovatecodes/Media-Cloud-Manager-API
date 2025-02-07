@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { HttpMethod, StatusCode } from "../utils/enums";
+import { HttpMethod, StatusCode } from "../utils/enums.js";
 
 export const apiKeyMiddleware = (req: Request, res: Response, next: NextFunction): any => {
   const apiKey = req.header("x-api-key"); // Ou "Authorization" se preferir outro nome

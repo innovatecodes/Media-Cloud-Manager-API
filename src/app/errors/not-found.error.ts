@@ -1,7 +1,7 @@
 
-import { StatusCode } from "../utils/enums";
-import { sendStatusCodeMessage } from "../utils/send-status-code";
-import { BaseError } from "./base.error";
+import { StatusCode } from "../utils/enums.js";
+import { sendStatusCodeMessage } from "../utils/send-status-code.js";
+import { BaseError } from "./base.error.js";
 
 export class NotFoundError extends BaseError {
     constructor(statusMessage?: string) {

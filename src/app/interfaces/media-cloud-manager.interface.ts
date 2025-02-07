@@ -1,21 +1,21 @@
-import { ContentType, HttpMethod, StatusCode } from "../utils/enums";
+import { ContentType, HttpMethod, StatusCode } from "../utils/enums.js";
 
-export interface IMedia<T extends string | null> {
+export interface IMedia {
   media_id?: number;
-  genres: string[];
-  categories: string[];
+  category_list?: string[];
   media_description: string;
   title: string;
-  media_posted_at?: T;
-  media_updated_at?: T;
+  posted_at?: string;
+  updated_at?: string;
   link: string;
-  default_image_file: T;
-  cloudinary_secure_url: T;
-  temporary_public_id: T;
+  default_image_file?: string;
+  cloudinary_secure_url?: string;
+  temporary_public_id?: string;
+  original_filename?: string;
 }
 
 export interface IData {
-  data: Array<IMedia<string>>;
+  data: Array<IMedia>;
 }
 
 export interface ICorsOptions<T extends string | boolean = boolean> {
@@ -35,13 +35,14 @@ export interface IPaginationDetails {
   totalItems: number;
   limitPerPage: number;
   numberOfPages: number;
-  offset: number;  
+  offset: number;
 }
 
 export interface IPaginationResponse<T> {
   paginationDetails: IPaginationDetails;
-  paginationResults: T;
+  data: T;
 }
+
 
 
 

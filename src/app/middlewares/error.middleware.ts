@@ -1,12 +1,12 @@
 
 import express, { Request, Response, NextFunction } from "express";
-import { ValidationError } from "../errors/validation.error";
-import { InternalServerError } from "../errors/internal-server.error";
-import { NotFoundError } from "../errors/not-found.error";
-import { ContentTooLargeError } from "../errors/content-too-large.error";
-import { UnsupportedMediaTypeError } from "../errors/unsupported-media-type.error";
-import { StatusCode } from "../utils/enums";
-import { sendStatusCodeMessage } from "../utils/send-status-code";
+import { ValidationError } from "../errors/validation.error.js";
+import { InternalServerError } from "../errors/internal-server.error.js";
+import { NotFoundError } from "../errors/not-found.error.js";
+import { ContentTooLargeError } from "../errors/content-too-large.error.js";
+import { UnsupportedMediaTypeError } from "../errors/unsupported-media-type.error.js";
+import { StatusCode } from "../utils/enums.js";
+import { sendStatusCodeMessage } from "../utils/send-status-code.js";
 
 export class ErrorMiddleware {
     setError(app: express.Express) {

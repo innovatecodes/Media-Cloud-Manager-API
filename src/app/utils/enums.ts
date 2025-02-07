@@ -1,4 +1,4 @@
-import { loadNodeEnvironment } from "./dotenv.config";
+import { loadNodeEnvironment } from "./dotenv.config.js";
 
 loadNodeEnvironment();
 
@@ -36,12 +36,11 @@ export enum HttpMethod {
   GET = "GET",
   POST = "POST",
   PUT = "PUT",
-  PATCH = "PATCH",
+  //PATCH = "PATCH",
   DELETE = "DELETE",
 }
 
 export const EndPoint = {
-  ROOT: `${process.env.URL as string}`,
   MEDIA: "/api/media",
   SEARCH: "/api/media/search",
   MEDIA_BY_ID: "/api/media/:id",

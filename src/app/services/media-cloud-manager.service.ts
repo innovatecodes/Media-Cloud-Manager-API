@@ -1,24 +1,24 @@
 import { Request, Response } from "express";
-import { IData, IMedia } from "../interfaces/media-cloud-manager.interface";
-import { ValidationError } from "../errors/validation.error";
-import { NotFoundError } from "../errors/not-found.error";
-import { formatDate } from "../utils/formate-date";
-import { removeAccents } from "../utils/remove.accents";
-import { EndPoint, HttpMethod, StatusCode } from "../utils/enums";
-import { loadNodeEnvironment } from "../utils/dotenv.config";
-import { parseUrlSearch } from "../utils/parse-url-search";
-import { removeWhiteSpace } from "../utils/remove-white-space";
-import { MediaCloudManagerRepository } from "../repositories/media-cloud-manager.repository";
-import { paginateMediaContent } from "../utils/paginate-media-content";
+import { IData, IMedia } from "../interfaces/media-cloud-manager.interface.js";
+import { ValidationError } from "../errors/validation.error.js";
+import { NotFoundError } from "../errors/not-found.error.js";
+import { formatDate } from "../utils/formate-date.js";
+import { removeAccents } from "../utils/remove.accents.js";
+import { EndPoint, HttpMethod, StatusCode } from "../utils/enums.js";
+import { loadNodeEnvironment } from "../utils/dotenv.config.js";
+import { parseUrlSearch } from "../utils/parse-url-search.js";
+import { removeWhiteSpace } from "../utils/remove-white-space.js";
+import { MediaCloudManagerRepository } from "../repositories/media-cloud-manager.repository.js";
+import { paginate } from "../utils/paginate.js";
+import { UrlWithStringQuery } from 'url';
 
 loadNodeEnvironment();
 
 export class MediaCloudManagerService {
-  public static async getAllMediaContent(req: Request, res: Response) {
+  public static async getAll(req: Request, res: Response) {
     try {
       const data = await MediaCloudManagerRepository.loadDataAfterReadFile() as IData;
-      const paginatedData = paginateMediaContent(req, res, 1, 10, data);
-      return paginatedData;
+      return paginate(req, res, 1, 10, data);
     } catch (error) {
       throw error;
     }
@@ -26,66 +26,54 @@ export class MediaCloudManagerService {
 
   public static async search(req: Request = {} as Request, res: Response = {} as Response) {
     try {
+
       const data = await MediaCloudManagerRepository.loadDataAfterReadFile() as IData;
-      const { search, initialKey } = parseUrlSearch(req);
-      const reqByGenre = (req.query.genre as string)?.toLowerCase();
-      const reqByCategory = (req.query.category as string)?.toLowerCase();
-      const reqBySearch = (removeAccents(req.query.search as string))?.toLowerCase();
-      const hasSearchParams = search.searchParams.has('category') || search.searchParams.has('genre') || search.searchParams.has('search');
+      const { search } = parseUrlSearch(req);
+      const reqCategory = removeAccents((search.searchParams.get('category') as string)?.toLowerCase());
+      const reqSearch = (removeAccents(search.searchParams.get('search') as string)?.toLowerCase());
+      const hasSearchParams = search.searchParams.has('category') || search.searchParams.has('search');
       const apiUrl = `${process.env.URL}${EndPoint.MEDIA}`;
       const finalUrl = apiUrl.endsWith('?') ? apiUrl.split('?').at(0) : apiUrl;
 
-      const filtered: IMedia<string>[] = data.data.filter(q => {
-        if ('genre' in req.query && 'category' in req.query)
-          return q.genres.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByGenre)) && reqByGenre.length > 0) && q.categories.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByCategory)) && reqByCategory.length > 0);
 
-        if ('genre' in req.query)
-          return q.genres.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByGenre)) && reqByGenre.length > 0);
+      const filtered: IMedia[] = data.data.filter(q => {
 
         if ('category' in req.query)
-          return q.categories.some(c => c.toLowerCase().includes(removeWhiteSpace(reqByCategory)) && reqByCategory.length > 0);
+          return q.category_list?.some(c => removeAccents(c.toLowerCase())?.includes(removeWhiteSpace(reqCategory)) && reqCategory?.length > 0);
 
         if ('search' in req.query) {
-          const reqBySearchSanitized = removeWhiteSpace(reqBySearch);
-          if (reqBySearchSanitized.length <= 0) return;
-          else return (removeAccents(q.media_description.toLowerCase()).includes(reqBySearchSanitized)) || (removeAccents(q.title.toLowerCase()).includes(reqBySearchSanitized));
+          const reqSearchSanitized = removeWhiteSpace(reqSearch);
+          if (reqSearchSanitized.length <= 0) return;
+          else return (removeAccents(q.media_description?.toLowerCase()).includes(reqSearchSanitized)) || (removeAccents(q.title?.toLowerCase()).includes(reqSearchSanitized));
         }
-        return false; // []
+        return false;
       });
 
-      const hasQueryString = (...args: string[]): boolean => args.includes('genre') || args.includes('category') || args.includes('search');
+      const hasQueryString = (...args: string[]): boolean => args.includes('category') || args.includes('search');
       if (hasQueryString(...Object.keys(req.query))) {
         if (filtered.length === 0) {
-      
-          if ('genre' in (req.query) && ('category' in req.query))
-            throw new ValidationError(`Infelizmente, não encontramos resultados para sua busca!`);
+          if ('category' in (req.query) && reqCategory.length > 0)
+            throw new ValidationError(`Nenhum resultado encontrado para a categoria \"${removeWhiteSpace(reqCategory)}\"!`);
+          else if ('category' in req.query && reqCategory.length === 0)
+            return res.redirect(StatusCode.FOUND, `${finalUrl}`);
 
-          if ('genre' in req.query && !('category' in req.query) && reqByGenre.length > 0)
-            throw new ValidationError(`Nenhum resultado encontrado para o gênero \"${removeWhiteSpace(reqByGenre)}\"!`);
-          else if ('genre' in req.query && !('category' in req.query) && reqByGenre.length === 0)
-            return res.redirect(StatusCode.FOUND, `${finalUrl}`); 
-
-          if ('category' in req.query && !('genre' in req.query) && reqByCategory.length > 0)
-            throw new ValidationError(`Nenhum resultado encontrado para a categoria \"${removeWhiteSpace(reqByCategory)}\"!`);
-          else if ('category' in req.query && !('genre' in req.query) && reqByCategory.length === 0)
-            return res.redirect(StatusCode.FOUND, `${finalUrl}`); 
-
-          if ('search' in (req.query) && reqBySearch.length > 0)
-            throw new ValidationError(`Nenhum resultado encontrado para \"${removeWhiteSpace(reqBySearch)}\"!`);
-          else return res.redirect(StatusCode.FOUND, `${finalUrl}`); // throw new ValidationError(`É necessário especificar o tipo de conteúdo para prosseguir com a busca!`);
+          if ('search' in (req.query) && reqSearch.length > 0)
+            throw new ValidationError(`Nenhum resultado encontrado para \"${removeWhiteSpace(reqSearch)}\"!`);
+          else return res.redirect(StatusCode.FOUND, `${finalUrl}`);
         }
+
       }
       else if ((search.href.includes('?') && !hasSearchParams)) {
         return res.redirect(StatusCode.FOUND, `${finalUrl}`)
       };
-    
+
       return filtered && filtered.length > 1 ? filtered : filtered[0];
     } catch (error) {
       throw error;
     }
   }
 
-  public static async getMediaContentById(id: number) {
+  public static async getById(id: number) {
     try {
       const data = (await MediaCloudManagerRepository.loadDataAfterReadFile() as IData);
       const itemFound = data.data.find((column => column.media_id === id));
@@ -96,25 +84,27 @@ export class MediaCloudManagerService {
     }
   }
 
-  public static async createMediaContent(req: Request, res?: Response) {
+  public static async save(req: Request, res: Response = {} as Response) {
     try {
+      const { category_list, media_description, title, link } = req.body;
+
       const data = (await MediaCloudManagerRepository.loadDataAfterReadFile()) as IData;
 
-      this.validateRequest(req);
+      this.validateFields(req);
 
       if (!data?.data) data.data = [];
 
-      const sortedData: IMedia<string> = {
-        genres: (req.body.genres as string).toLowerCase().split(",").map(value => value.trim()),
-        categories: (req.body.categories as string).toLowerCase().split(",").map(value => value.trim()),
-        media_description: (req.body.media_description as string).trim(),
-        title: (req.body.title as string).trim(),
-        media_posted_at: formatDate(),
-        media_updated_at: req.body.media_updated_at,
-        link: (req.body.link as string).trim(),
-        default_image_file: `${process.env.URL}/uploads/${req.file?.filename ?? 'no-image.jpg'}`,
-        cloudinary_secure_url: (res?.locals as { secure_url: string })?.secure_url,
-        temporary_public_id: (res?.locals as { public_id: string }).public_id?.replace('uploads/', ''),
+      const sortedData: IMedia = {
+        category_list: (category_list as string[]).map((value: string) => removeWhiteSpace(value.toLowerCase().trim())),
+        media_description: (media_description as string).trim(),
+        title: (title as string).trim(),
+        posted_at: new Date().toLocaleString(), // formatDate(),
+        updated_at: "",
+        link: (link as string).trim(),
+        default_image_file: `${process.env.URL}/uploads/no-image.jpg`,
+        cloudinary_secure_url: (res?.locals as { secure_url: string })?.secure_url ?? "",
+        temporary_public_id: (res.locals as { public_id: string }).public_id?.replace('uploads/', '') ?? "",
+        original_filename: (res.locals as { inserted: string }).inserted ?? "",
       }
 
       data.data.push({
@@ -130,7 +120,7 @@ export class MediaCloudManagerService {
     }
   }
 
-  public static async updatePartialMediaContent(id: number, req: Request, res?: Response) {
+  public static async update(id: number, req: Request = {} as Request, res: Response = {} as Response) {
     try {
       const { media_description, title, link } = req.body;
       const data = await MediaCloudManagerRepository.loadDataAfterReadFile() as IData;
@@ -138,22 +128,22 @@ export class MediaCloudManagerService {
 
       if (index === -1) throw new NotFoundError("Item não encontrado!");
 
-      data.data[index].media_description = (media_description as string)?.trim() ?? data.data[index].media_description
+      data.data[index].media_description = (media_description as string)?.trim() ?? data.data[index].media_description;
       data.data[index].title = (title as string)?.trim() ?? data.data[index].title;
-      data.data[index].media_updated_at = formatDate();
+      data.data[index].updated_at = new Date().toLocaleString(); //formatDate();
       data.data[index].link = (link as string)?.trim() ?? data.data[index].link;
-      data.data[index].default_image_file = !req.file?.filename ? data.data[index].default_image_file : `${process.env.URL}/uploads/${req.file?.filename}`;
-      data.data[index].cloudinary_secure_url = (res?.locals as { secure_url: string }).secure_url ?? data.data[index].cloudinary_secure_url;
-      data.data[index].temporary_public_id = (res?.locals as { public_id: string }).public_id?.replace('uploads/', '') ?? data.data[index].temporary_public_id;
+      data.data[index].cloudinary_secure_url = (res.locals as { secure_url: string }).secure_url;
+      data.data[index].temporary_public_id = (res.locals as { public_id: string }).public_id?.replace('uploads/', '');
+      data.data[index].original_filename = (res.locals as { inserted: string }).inserted;
 
       await MediaCloudManagerRepository.writeToFile("Erro ao tentar atualizar os dados!", data);
-      return data.data[index];
+      return data.data;
     } catch (error) {
       throw error;
     }
   }
 
-  public static async deleteMediaContent(id: number) {
+  public static async delete(id: number) {
     try {
       const data = await MediaCloudManagerRepository.loadDataAfterReadFile() as IData;
       const index = data.data.findIndex((column) => column.media_id === id);
@@ -169,11 +159,12 @@ export class MediaCloudManagerService {
     }
   }
 
-  private static validateRequest(req: Request) {
-    if (!HttpMethod.POST) return;
-    if (!req.body.media_description) throw new ValidationError("O campo 'descrição' não pode ser vazio!");
-    if (!req.body.title) throw new ValidationError("O campo 'título' não pode ser vazio!");
-    if (!req.body.link) throw new ValidationError("O campo 'link' não pode ser vazio!");
+  private static validateFields(req: Request) {
+    const { media_description, title, link } = req.body;
+    if ([HttpMethod.GET, HttpMethod.PUT, /*HttpMethod.PATCH*/, HttpMethod.DELETE]?.includes(req.method as HttpMethod)) return;
+    if (!media_description) throw new ValidationError("O campo 'descrição' não pode ser vazio!");
+    if (!title) throw new ValidationError("O campo 'título' não pode ser vazio!");
+    if (!link) throw new ValidationError("O campo 'link' não pode ser vazio!");
   }
 
 
@@ -233,4 +224,8 @@ export class MediaCloudManagerService {
 
 }
 
+
+function pagination(req: Request<import("express-serve-static-core").ParamsDictionary, any, any, import("qs").ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, arg2: number, arg3: number, data: IData) {
+  throw new Error("Function not implemented.");
+}
 

@@ -1,13 +1,13 @@
 
 
 import { NextFunction, Request, Response } from "express";
-import { StatusCode } from "../utils/enums";
-import { MediaCloudManagerService } from "../services/media-cloud-manager.service";
+import { StatusCode } from "../utils/enums.js";
+import { MediaCloudManagerService } from "../services/media-cloud-manager.service.js";
 
 export class MediaCloudManagerController {
-  public static async getAllMediaContent(req: Request, res: Response, next: NextFunction) {
+  public static async getAll(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await MediaCloudManagerService.getAllMediaContent(req, res);
+      const data = await MediaCloudManagerService.getAll(req, res);
       res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {
@@ -25,9 +25,9 @@ export class MediaCloudManagerController {
     }
   }
 
-  public static async getMediaContentById(req: Request, res: Response, next: NextFunction) {
+  public static async getById(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await MediaCloudManagerService.getMediaContentById(
+      const data = await MediaCloudManagerService.getById(
         Number(req.params.id)
       );
       res.status(StatusCode.OK).json(data);
@@ -37,9 +37,9 @@ export class MediaCloudManagerController {
     }
   }
 
-  public static async createMediaContent(req: Request, res: Response, next: NextFunction) {
+  public static async save(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await MediaCloudManagerService.createMediaContent(req, res);
+      const data = await MediaCloudManagerService.save(req, res);
       res.status(StatusCode.CREATED).json(data);
       return;
     } catch (error) {
@@ -47,9 +47,9 @@ export class MediaCloudManagerController {
     }
   }
 
-  public static async updatePartialMediaContent(req: Request, res: Response, next: NextFunction) {
+  public static async update(req: Request, res: Response, next: NextFunction) {
     try {
-      const data = await MediaCloudManagerService.updatePartialMediaContent(Number(req.params.id), req, res);
+      const data = await MediaCloudManagerService.update(Number(req.params.id), req, res);
       res.status(StatusCode.OK).json(data);
       return;
     } catch (error) {
@@ -57,9 +57,9 @@ export class MediaCloudManagerController {
     }
   }
 
-  public static async deleteMediaContent(req: Request, res: Response, next: NextFunction) {
+  public static async delete(req: Request, res: Response, next: NextFunction) {
     try {
-      await MediaCloudManagerService.deleteMediaContent(Number(req.params.id));
+      await MediaCloudManagerService.delete(Number(req.params.id));
       res.status(StatusCode.NO_CONTENT).end();
       return;
     } catch (error) {

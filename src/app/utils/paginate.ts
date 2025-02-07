@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import { IData, IMedia, IPaginationDetails, IPaginationResponse } from "../interfaces/media-cloud-manager.interface";
-import { EndPoint, StatusCode } from "./enums";
-import { parseUrlSearch } from "./parse-url-search";
+import { IData, IMedia, IPaginationDetails, IPaginationResponse } from "../interfaces/media-cloud-manager.interface.js";
+import { EndPoint, StatusCode } from "./enums.js";
+import { parseUrlSearch } from "./parse-url-search.js";
 
-export const paginateMediaContent = (req: Request, res: Response, page: number = 1, limit: number = 5, data?: IData, sortBy?: string, sortOrder: string = 'ASC') => {
+export const paginate = (req: Request, res: Response, page: number = 1, limit: number = 5, mediaResponse?: IData, sortBy?: string, sortOrder: string = 'ASC') => {
     const { search } = parseUrlSearch(req);
     const apiUrl = `${process.env.URL}${EndPoint.MEDIA}`;
     const finalUrl = apiUrl.endsWith('?') ? apiUrl.split('?').at(0) : apiUrl;
 
     let $page = Math.max(1, Number(req.query.page) || page);
-    const totalItems = data?.data.length ?? 0;
+    const totalItems = mediaResponse?.data.length ?? 0;
     const limitPerPage = limit;
     const numberOfPages = Math.ceil(totalItems / limitPerPage);
     const offset = ($page - 1) * limitPerPage;
@@ -26,7 +26,7 @@ export const paginateMediaContent = (req: Request, res: Response, page: number =
     if (search.href.includes('?') && !search.searchParams.has('page'))
         return res.redirect(StatusCode.FOUND, `${finalUrl}`);
 
-    const paginationResults: IMedia<string>[] = data?.data.slice(offset, offset + limitPerPage).sort(compareFn) ?? [];
+    const paginatedData: IMedia[] = mediaResponse?.data.slice(offset, offset + limitPerPage).sort(compareFn) ?? [];
 
     const paginationDetails: IPaginationDetails = {
         page: $page,
@@ -36,44 +36,39 @@ export const paginateMediaContent = (req: Request, res: Response, page: number =
         offset: offset,
     }
 
-    const paginatedData: IPaginationResponse<IMedia<string>[]> = {
+    const data: IPaginationResponse<IMedia[]> = {
         paginationDetails: paginationDetails,
-        paginationResults: paginationResults,
+        data: paginatedData,
     };
+    
+    return data;
 
-    Object.defineProperties(paginatedData, {
-        paginationResults: { value: paginationResults },
-        paginationDetails: { value: paginationDetails },
-    });
-
-    return 'page' in req.query ? paginatedData : data;
-
-    function compareFn(a: IMedia<string>, b: IMedia<string>) {
+    function compareFn(a: IMedia, b: IMedia) {
         // Ordenação por título
         if (sortBy === 'title') {
             // Se 'a' não tiver data e 'b' tiver, coloca 'a' depois de 'b'.
-            if (!a.media_posted_at && b.media_posted_at)
+            if (!a.posted_at && b.posted_at)
                 return 1;
             // Se 'b' não tiver data e 'a' tiver, coloca 'b' antes de 'a'.
-            if (a.media_posted_at && !b.media_posted_at)
+            if (a.posted_at && !b.posted_at)
                 return -1;
             // Se ambos tiverem título, realiza a comparação por título (crescente ou decrescente).
             if (a.title && b.title)
-                return sortOrder === 'DESC' 
+                return sortOrder === 'DESC'
                     ? b.title.localeCompare(a.title)  // Ordenação decrescente
                     : a.title.localeCompare(b.title); // Ordenação crescente
         }
         // Ordenação por data de postagem
-        if (sortBy === 'media_posted_at') {
+        if (sortBy === 'posted_at') {
             // Se ambos tiverem data, realiza a comparação usando '>' (decrescente) ou 'localeCompare' (crescente).
-            if (a.media_posted_at && b.media_posted_at) 
-                return sortOrder === 'DESC' 
-                    ? b.media_posted_at > a.media_posted_at ? 1 : -1  // Comparação decrescente (ISO 8601)
-                    : a.media_posted_at.localeCompare(b.media_posted_at); // Comparação crescente (ISO 8601)
-            if (!a.media_posted_at) return 1;     // Se 'a' não tiver data, coloca 'a' depois de 'b'.
-            if (!b.media_posted_at) return -1; // Se 'b' não tiver data, coloca 'b' antes de 'a'.
+            if (a.posted_at && b.posted_at)
+                return sortOrder === 'DESC'
+                    ? b.posted_at > a.posted_at ? 1 : -1  // Comparação decrescente (ISO 8601)
+                    : a.posted_at.localeCompare(b.posted_at); // Comparação crescente (ISO 8601)
+            if (!a.posted_at) return 1;     // Se 'a' não tiver data, coloca 'a' depois de 'b'.
+            if (!b.posted_at) return -1; // Se 'b' não tiver data, coloca 'b' antes de 'a'.
         }
         return 0; // Se não houver critério de ordenação aplicável, mantém a ordem original.
-    }    
+    }
 };
 

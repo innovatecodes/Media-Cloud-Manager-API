@@ -1,1 +1,1 @@
-export const removeWhiteSpace = (queryString: string ): string => queryString.replace(/\s+/g, ' ').trim();
+export const removeWhiteSpace = (str: string ): string => str?.replace(/\s+/g, ' ').trim();

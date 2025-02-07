@@ -1,9 +1,9 @@
 import multer, { FileFilterCallback, MulterError } from "multer";
 import { NextFunction, Request, Response } from 'express';
-import path from "path";
-import { ContentTooLargeError } from "../errors/content-too-large.error";
-import { UnsupportedMediaTypeError } from "../errors/unsupported-media-type.error";
-import { storage } from "../utils/disk-storage";
+import path from "node:path";
+import { ContentTooLargeError } from "../errors/content-too-large.error.js";
+import { UnsupportedMediaTypeError } from "../errors/unsupported-media-type.error.js";
+import { storage } from "../utils/disk-storage.js";
 
 const fileFilter = (req: Request, file: Express.Multer.File, callback: FileFilterCallback) => {
     const allowedExtensions = ['.jpg', '.png', '.webp'];
@@ -28,7 +28,7 @@ const fileFilter = (req: Request, file: Express.Multer.File, callback: FileFilte
 // Configuração do multer com armazenamento, limites e filtro de arquivos
 export const upload = multer({
     storage, // Configuração de armazenamento personalizada importada
-    limits: { fileSize: 3 * 1024 * 1024, }, // Limite de tamanho do arquivo: 3MB
+    limits: { fileSize: 2 * 1024 * 1024, }, // Limite de tamanho do arquivo: 2MB
     fileFilter // Função para validar o tipo e extensão do arquivo
 }).single('default_image_file'); // Define o nome do campo como 'default_image_file'
 
@@ -37,11 +37,10 @@ export const uploadMiddleware = (req: Request, res: Response, next: NextFunction
     upload(req, res, (error: MulterError | any) => {
         try {
             if (error instanceof multer.MulterError) {
-                if (error.code === 'LIMIT_FILE_SIZE') throw new ContentTooLargeError('Falha no upload. O tamanho máximo permitido para upload é de 3 MB!');
-                if (error.code === 'LIMIT_UNEXPECTED_FILE') throw error; // Lança erro para arquivo inesperado
+                if (error.code === 'LIMIT_FILE_SIZE') throw new ContentTooLargeError('Falha no upload. O tamanho máximo permitido para upload é de 2 MB!');
+                if (error.code === 'LIMIT_UNEXPECTED_FILE') throw error; 
             }
 
-            // Se o erro for relacionado ao tipo MIME, lança um erro específico
             if (error?.name === 'InvalidMimeType')
                 throw error;
 
@@ -49,7 +48,7 @@ export const uploadMiddleware = (req: Request, res: Response, next: NextFunction
                 return next();
             else return next();
         } catch (error) {
-            next(error); // Passa o erro para o próximo middleware de erro
+            next(error); 
         }
     })
 };

@@ -1,11 +1,11 @@
 import { Request } from 'express';
-import { ICorsOptions } from "../interfaces/media-cloud-manager.interface";
-import { StatusCode, HttpMethod } from "./enums";
+import { ICorsOptions } from "../interfaces/media-cloud-manager.interface.js";
+import { StatusCode, HttpMethod } from "./enums.js";
 
 // Define as opções para a política CORS (Cross-Origin Resource Sharing)
 export const corsOptions = (req: Request, callback: any): void => {
   // Lista de URLs autorizadas (whitelist) para permitir o acesso à API
-  let whitelist = ['http://127.0.0.1:4200', 'http://127.0.0.1:3001'];
+  let whitelist = ['http://127.0.0.1:4200', 'http://127.0.0.1:3000', 'http://127.0.0.1:5500'];
   // Inicializa a variável de opções CORS (ICorsOptions)
   let corsOptions: ICorsOptions;
   // Verifica se o cabeçalho 'Origin' da requisição está na lista de URLs permitidas
@@ -17,12 +17,12 @@ export const corsOptions = (req: Request, callback: any): void => {
       methods: [
         HttpMethod.GET,    // Permite GET
         HttpMethod.PUT,    // Permite PUT
-        HttpMethod.PATCH,  // Permite PATCH
+        //HttpMethod.PATCH,  // Permite PATCH
         HttpMethod.POST,   // Permite POST
         HttpMethod.DELETE, // Permite DELETE
       ],
       // Permite os cabeçalhos específicos
-      allowedHeaders: ["Content-Type", "x-api-key", /* "Authorization" */],
+      allowedHeaders: ["Content-Type", "x-api-key", "Authorization"],
       // Não permite que o pré-vôo (preflight request) continue
       preflightContinue: false,
       // Status de sucesso para a resposta de opções (preflight), o código NO_CONTENT indica que não há conteúdo na resposta

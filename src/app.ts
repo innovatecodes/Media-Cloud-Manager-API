@@ -1,25 +1,25 @@
 import express from "express";
-import { routes } from "./app/routes/media-cloud-manager.routes";
-import path from "path";
+import { routes } from "./app/routes/media-cloud-manager.routes.js";
+import path from "node:path";
 import cors from 'cors';
-import { ErrorMiddleware } from "./app/middlewares/error.middleware";
-import { corsOptions } from "./app/utils/cors-options";
+import { ErrorMiddleware } from "./app/middlewares/error.middleware.js";
+import { corsOptions } from "./app/utils/cors-options.js";
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 export const app = express();
 
-app.use(express.json());
+const __filename = fileURLToPath(import.meta.url); // Resolve o caminho completo do arquivo atual
+const __dirname = dirname(__filename); // Resolve o diretório onde o arquivo está localizado
 
-// Utiliza o middleware express.urlencoded() para fazer o parsing de requisições com corpo URL-encoded
-// O parâmetro `extended: true` permite que o corpo da requisição seja interpretado com suporte a objetos e arrays complexos.
-app.use(express.urlencoded({ extended: true }));
-app.use(cors(corsOptions));
-
+app.use(express.json({ limit: '3mb' }));
+app.use(express.urlencoded({ extended: true })); 
+app.use(cors(corsOptions)); 
 app.use('/uploads', express.static(path.join(__dirname, 'assets', 'uploads')));
 app.use('/js', express.static(path.join(__dirname, '..', 'public', 'js')));
 
 app.use(routes);
 
-// Middleware de erros personalizados
 new ErrorMiddleware().setError(app);
 
 
