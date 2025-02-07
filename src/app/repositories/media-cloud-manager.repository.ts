@@ -34,7 +34,7 @@ export class MediaCloudManagerRepository {
 
   public static async deleteFromFile(id: number) {
     return new Promise((resolve, reject) => {
-      this.loadDataAfterReadFile().then(data => {
+      this.loadData().then(data => {
         const filePath = data.data.find(column => column.media_id === id)?.default_image_file;
         const defaultImageFile = filePath?.split(`${process.env.URL}/uploads/`).at(1);
         unlink(path.resolve(__dirname, '../../assets/uploads/' + defaultImageFile), error => {
