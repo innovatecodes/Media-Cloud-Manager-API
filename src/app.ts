@@ -9,8 +9,8 @@ import { fileURLToPath } from 'node:url';
 
 export const app = express();
 
-const __filename = fileURLToPath(import.meta.url); // Resolve o caminho completo do arquivo atual
-const __dirname = dirname(__filename); // Resolve o diretório onde o arquivo está localizado
+const __filename = fileURLToPath(import.meta.url); 
+const __dirname = dirname(__filename); 
 
 app.use(express.json({ limit: '3mb' }));
 app.use(express.urlencoded({ extended: true })); 
